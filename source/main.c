@@ -1,4 +1,4 @@
-/* Alchemii for Wii - platform layer: video, input, sound, SD card saves.
+/* Little Alchemy 2 for Wii - platform layer: video, input, sound, SD card saves.
  * Input: Wii Remote (pointer, Nunchuk, Classic Controller), GameCube controller, USB keyboard
  * and USB mouse; with the optional libraries also the Wii U GamePad (Wii U VC), Wii U Pro
  * Controller and wired DualShock 3. */
@@ -67,10 +67,12 @@ static void present(void) {
 }
 
 /* ---------------- saves ---------------- */
-static const char *SAVE_PATHS[] = {"sd:/apps/alchemii/alchemii.sav", "sd:/alchemii.sav"};
+/* saves are written to the first two; the last two are where versions named Alchemii saved */
+static const char *SAVE_PATHS[] = {"sd:/apps/LittleAlchemy2/LittleAlchemy2.sav", "sd:/LittleAlchemy2.sav",
+	"sd:/apps/alchemii/alchemii.sav", "sd:/alchemii.sav"};
 int plat_load(char *buf, int max) {
 	if (!sdOK) return -1;
-	for (int i = 0; i < 2; i++) {
+	for (int i = 0; i < 4; i++) {
 		FILE *f = fopen(SAVE_PATHS[i], "rb");
 		if (!f) continue;
 		int n = (int)fread(buf, 1, max, f);
@@ -90,7 +92,12 @@ void plat_save(const char *buf, int len) {
 	}
 }
 
-const char *plat_icon_path(void) { return sdOK ? "sd:/apps/alchemii/icons.bin" : NULL; }
+const char *plat_icon_path(void) {
+	static const char *const paths[] = {"sd:/apps/LittleAlchemy2/icons.bin", "sd:/apps/alchemii/icons.bin"};
+	struct stat st;
+	for (int i = 0; sdOK && i < 2; i++) if (!stat(paths[i], &st)) return paths[i];
+	return NULL;
+}
 
 /* ---------------- sound: short synthesized effects ---------------- */
 #define RATE 32000
@@ -337,7 +344,7 @@ int main(void) {
 	input_init();
 	sound_init();
 	sdOK = fatInitDefault();
-	if (sdOK) mkdir("sd:/apps", 0777), mkdir("sd:/apps/alchemii", 0777);
+	if (sdOK) mkdir("sd:/apps", 0777), mkdir("sd:/apps/LittleAlchemy2", 0777);
 	rmode = VIDEO_GetPreferredMode(NULL);
 	xfb[0] = MEM_K0_TO_K1(SYS_AllocateFramebuffer(rmode));
 	xfb[1] = MEM_K0_TO_K1(SYS_AllocateFramebuffer(rmode));

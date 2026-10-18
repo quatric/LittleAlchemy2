@@ -1,12 +1,12 @@
-# Alchemii
+# Little Alchemy 2 for Wii
 
 An element-combining puzzle game for the Wii Homebrew Channel. It uses the same
 elements and recipes as [Little Alchemy 2](https://littlealchemy2.com/): start with
 water, fire, earth and air and combine your way to all 720 elements.
 
-With the icon pack (`apps/alchemii/icons.bin`) on the SD card the game shows Little
+With the icon pack (`apps/LittleAlchemy2/icons.bin`) on the SD card the game shows Little
 Alchemy 2's own icons. The pack is Little Alchemy 2 artwork, so it is not included in
-`alchemii-hbc.zip`; make it yourself with `python3 tools/fetch_icons.py` (needs Google
+`LittleAlchemy2-hbc.zip`; make it yourself with `python3 tools/fetch_icons.py` (needs Google
 Chrome and ImageMagick) and copy it next to `boot.dol`. Without it the game draws its
 own icons.
 
@@ -15,10 +15,10 @@ metal (50 discoveries), time (100), big, science and philosophy (150), container
 and light, motion and small once you have found 5 related elements.
 
 ## Install
-Copy `apps/alchemii/` to `sd:/apps/alchemii/` and launch it from the Homebrew Channel
-(or unzip `alchemii-hbc.zip` onto the root of the SD card and add `icons.bin` to
-`sd:/apps/alchemii/` for the real icons). Progress is saved to
-`sd:/apps/alchemii/alchemii.sav`.
+Copy `apps/LittleAlchemy2/` to `sd:/apps/LittleAlchemy2/` and launch it from the Homebrew Channel
+(or unzip `LittleAlchemy2-hbc.zip` onto the root of the SD card and add `icons.bin` to
+`sd:/apps/LittleAlchemy2/` for the real icons). Progress is saved to
+`sd:/apps/LittleAlchemy2/LittleAlchemy2.sav` (saves from `sd:/apps/alchemii/` are picked up).
 
 ## Controls
 | Wii Remote | Classic / Wii U Pro / GamePad | GameCube | DualShock 3 | Action |
@@ -51,7 +51,7 @@ pairs over Bluetooth like a Wii Remote; the DualShock 3 works over USB.
 Requires devkitPPC + libogc (devkitPro) and Python 3.
 ```
 ./scripts/build_controller_portlibs.sh   # optional: Wii U GamePad, Wii U Pro, DualShock 3
-make package        # builds alchemii.dol and copies it to apps/alchemii/boot.dol
+make package        # builds LittleAlchemy2.dol and copies it to apps/LittleAlchemy2/boot.dol
 make run            # sends it to a Wii with wiiload
 ```
 Elements, recipes and unlock rules live in `tools/elements.txt`; `tools/gen_elements.py`

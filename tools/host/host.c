@@ -35,8 +35,8 @@ int plat_load(char *buf, int max) {
 	return n ? n : -1;
 }
 void plat_save(const char *buf, int len) { (void)buf; (void)len; }
-/* ALCHEMII_ICONS overrides the pack; set it to "" to see the drawn icons */
-const char *plat_icon_path(void) { const char *p = getenv("ALCHEMII_ICONS"); return p ? (*p ? p : NULL) : "apps/alchemii/icons.bin"; }
+/* LA2_ICONS overrides the pack; set it to "" to see the drawn icons */
+const char *plat_icon_path(void) { const char *p = getenv("LA2_ICONS"); return p ? (*p ? p : NULL) : "apps/LittleAlchemy2/icons.bin"; }
 void plat_sfx(int id) { (void)id; }
 void plat_rumble(int ms) { (void)ms; }
 
@@ -100,7 +100,7 @@ int main(int argc, char **argv) {
 		static const char *pick[2] = {"Water", "Fire"};
 		for (int k = 0; k < 2; k++) for (int e = 0; e < NEL; e++) if (!strcmp(ELEMS[e].name, pick[k]))
 			blit_scaled(icon_get(e, 0), 15 + k * 14, 16 + k * 16, 30, 255);
-		text(fUI, 84, 13, "Alchemii", 0xD79F47, 255, AL_CENTER);
+		text(fSmall, 84, 15, "Little Alchemy 2", 0xD79F47, 255, AL_CENTER);
 		FILE *o = fopen(argv[1], "wb");
 		fprintf(o, "P6\n128 48\n255\n");
 		for (int y = 0; y < 48; y++) for (int x = 0; x < 128; x++) { unsigned char px[3] = {CR(fb[y][x]), CG(fb[y][x]), CB(fb[y][x])}; fwrite(px, 1, 3, o); }

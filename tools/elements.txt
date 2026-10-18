@@ -1,4 +1,4 @@
-# Alchemii element table - the element set and recipes of Little Alchemy 2.
+# Little Alchemy 2 for Wii element table - the element set and recipes of Little Alchemy 2.
 # Name | colour (RRGGBB) | icon shape | recipes "A + B" separated by ";" | unlock rule
 # Unlock rules: "start" (a starting element), "progress N" (unlocked after N discoveries)
 # or "K of A, B, C" (unlocked after discovering K of those).

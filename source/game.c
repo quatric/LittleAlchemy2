@@ -1,4 +1,4 @@
-/* Alchemii - combine elements to discover new ones. Platform-independent game logic and drawing. */
+/* Little Alchemy 2 for Wii - combine elements to discover new ones. Platform-independent game logic and drawing. */
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -323,7 +323,7 @@ static void build_bg(void) {
 	/* soft shadow where the list meets the workspace */
 	for (int k = 0; k < 8; k++) fill_rect(PANX - 1 - k, 0, 1, SH, 0x1B001C, 90 - k * 11);
 	/* faint wordmark in the corner of the workspace */
-	text(fHuge, PANX - 22, SH - 64, "Alchemii", mix(C_WORK, C_GOLD, .13f), 255, AL_RIGHT);
+	text(fHuge, PANX - 22, SH - 64, "Little Alchemy 2", mix(C_WORK, C_GOLD, .13f), 255, AL_RIGHT);
 	memcpy(bg, fb, sizeof bg);
 }
 

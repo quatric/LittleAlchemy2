@@ -1,5 +1,5 @@
 #---------------------------------------------------------------------------------
-# Alchemii for Wii (devkitPPC + libogc)
+# Little Alchemy 2 for Wii (devkitPPC + libogc)
 #---------------------------------------------------------------------------------
 .SUFFIXES:
 ifeq ($(strip $(DEVKITPPC)),)
@@ -8,7 +8,7 @@ endif
 
 include $(DEVKITPPC)/wii_rules
 
-TARGET		:=	alchemii
+TARGET		:=	LittleAlchemy2
 BUILD		:=	build
 SOURCES		:=	source
 DATA		:=	data
@@ -65,8 +65,8 @@ $(SOURCES)/elements.h: tools/elements.txt tools/gen_elements.py
 	@python3 tools/gen_elements.py
 
 package: $(BUILD)
-	@cp $(OUTPUT).dol apps/alchemii/boot.dol
-	@echo packaged apps/alchemii/boot.dol
+	@cp $(OUTPUT).dol apps/LittleAlchemy2/boot.dol
+	@echo packaged apps/LittleAlchemy2/boot.dol
 
 clean:
 	@echo clean ...

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Download the Little Alchemy 2 element icons and pack them into apps/alchemii/icons.bin.
+"""Download the Little Alchemy 2 element icons and pack them into apps/LittleAlchemy2/icons.bin.
 
 The icons are Little Alchemy 2's own artwork, so they are not part of this repository:
 run this once to make an icon pack for your own SD card. Without the pack the game
@@ -19,13 +19,13 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.join(HERE, "..")
 SITE = "https://littlealchemy2.com"
 CACHE = os.path.join(ROOT, "build", "la2-icons")
-OUT = os.path.join(ROOT, "apps", "alchemii", "icons.bin")
+OUT = os.path.join(ROOT, "apps", "LittleAlchemy2", "icons.bin")
 SMALL, BIG = 52, 104
 CHROME = os.environ.get("CHROME", "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
 
 
 def get(url):
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (alchemii fetch_icons)"})
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (LittleAlchemy2 fetch_icons)"})
     with urllib.request.urlopen(req, timeout=30) as r:
         return r.read()
 

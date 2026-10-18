@@ -25,14 +25,14 @@ jobs:
         run: make package
 
       - name: Package (SD card layout)
-        run: zip -r alchemii-hbc.zip apps -x 'apps/alchemii/icons.bin'
+        run: zip -r LittleAlchemy2-hbc.zip apps -x 'apps/LittleAlchemy2/icons.bin'
 
       - uses: actions/upload-artifact@v4
         with:
-          name: alchemii-hbc
+          name: LittleAlchemy2-hbc
           path: apps/
 
       - uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/v')
         with:
-          files: alchemii-hbc.zip
+          files: LittleAlchemy2-hbc.zip
