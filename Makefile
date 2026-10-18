@@ -40,6 +40,13 @@ ifeq ($(WITH_SICKSAXIS),1)
  LIBS := -lsicksaxis $(LIBS)
 endif
 
+# The .dol that goes into the Homebrew Channel package.
+ifeq ($(NO_DOLXZ),1)
+BOOT_DOL	=	$(TARGET).dol
+else
+BOOT_DOL	=	$(TARGET)-xz.dol
+endif
+
 ifneq ($(BUILD),$(notdir $(CURDIR)))
 
 export OUTPUT	:=	$(CURDIR)/$(TARGET)
@@ -66,12 +73,12 @@ $(SOURCES)/elements.h: tools/elements.txt tools/gen_elements.py
 	@python3 tools/gen_elements.py
 
 package: $(BUILD)
-	@cp $(OUTPUT).dol apps/LittleAlchemy2/boot.dol
+	@cp $(BOOT_DOL) apps/LittleAlchemy2/boot.dol
 	@echo packaged apps/LittleAlchemy2/boot.dol
 
 clean:
 	@echo clean ...
-	@rm -fr $(BUILD) $(OUTPUT).elf $(OUTPUT).dol
+	@rm -fr $(BUILD) $(OUTPUT).elf $(OUTPUT).dol $(OUTPUT)-xz.dol
 
 run:
 	wiiload $(TARGET).dol
@@ -79,6 +86,16 @@ run:
 else
 
 DEPENDS	:=	$(OFILES:.o=.d)
+#---------------------------------------------------------------------------------
+# Self-extracting xz-compressed copy of the .dol (FIX94's dolxz, see
+# scripts/dolxz.sh). It is the default target; NO_DOLXZ=1 skips it.
+#---------------------------------------------------------------------------------
+ifneq ($(NO_DOLXZ),1)
+$(OUTPUT)-xz.dol: $(OUTPUT).dol
+	@echo compressing ... $(notdir $@)
+	@sh $(dir $(OUTPUT))scripts/dolxz.sh $< $@
+endif
+
 $(OUTPUT).dol: $(OUTPUT).elf
 $(OUTPUT).elf: $(OFILES)
 $(OFILES_SOURCES) : $(HFILES)
