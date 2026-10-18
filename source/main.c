@@ -191,12 +191,13 @@ static void stick(float x, float y) {
 	if (fabsf(y) < .18f) y = 0;
 	if (x * x + y * y > stickX * stickX + stickY * stickY) { stickX = clampf(x, -1, 1); stickY = clampf(y, -1, 1); }
 }
-/* The library's -1..1 range, rescaled to the divisors this game always used
- * (GameCube 80 / C-stick 70, DualShock 3 127); screen y grows downward. */
+/* The library's stick before its length is clamped, rescaled to the divisors
+ * this game always used (GameCube 80 / C-stick 70, DualShock 3 127); stick()
+ * clamps each axis as before, and screen y grows downward. */
 static void lib_stick(int which) {
 	float x, y, k = 1;
 	const char *src;
-	if (INPUT_Stick(which, &x, &y, &src) <= 0) return;
+	if (INPUT_StickRaw(which, &x, &y, &src) <= 0) return;
 	if (!strcmp(src, "GameCube")) k = which == INPUT_STICK_LEFT ? 70.f / 80.f : 60.f / 70.f;
 	else if (!strcmp(src, "DualShock 3")) k = 110.f / 127.f;
 	stick(x * k, -y * k);
