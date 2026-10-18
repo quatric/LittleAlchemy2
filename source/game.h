@@ -18,7 +18,10 @@ int game_quit(void);
 int plat_load(char *buf, int max);              /* returns bytes read, or -1 */
 const unsigned char *plat_logo(void);           /* data/logo.rgba, or NULL */
 void plat_save(const char *buf, int len);
-enum { SFX_PICK, SFX_DROP, SFX_COMBINE, SFX_DISCOVER, SFX_FAIL, SFX_DELETE, SFX_CLICK };
+/* SFX_COMBINE: a mix that makes something already known; SFX_DISCOVER: something new;
+ * SFX_POP: a discovery card appears */
+enum { SFX_PICK, SFX_DROP, SFX_COMBINE, SFX_DISCOVER, SFX_FAIL, SFX_DELETE, SFX_CLICK, SFX_CLONE, SFX_POP, SFX_COUNT };
 void plat_sfx(int id);
+void plat_audio(int music, int sfx);            /* music / sound effects switched on or off */
 void plat_rumble(int ms);
 #endif

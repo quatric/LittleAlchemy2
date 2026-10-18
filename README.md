@@ -10,6 +10,13 @@ Alchemy 2's own icons. The pack is Little Alchemy 2 artwork, so it is not includ
 Chrome and ImageMagick) and copy it next to `boot.dol`. Without it the game draws its
 own icons.
 
+The same goes for music and sound: with the audio pack (`apps/LittleAlchemy2/audio/`) on the
+SD card the game plays Little Alchemy 2's own music and sound effects, with the music
+picking calm or busy tracks from how fast you are discovering, like the original. Make it
+with `python3 tools/fetch_audio.py` and copy the `audio` folder next to `boot.dol`. Without
+it the game plays simple built-in sound effects and no music. Music and sound effects can
+each be turned off in the menu (+); the choice is saved with your progress.
+
 Like Little Alchemy 2, a few elements are unlocked by progress instead of being made:
 metal (50 discoveries), time (100), big, science and philosophy (150), container (300),
 and light, motion and small once you have found 5 related elements.
@@ -17,7 +24,7 @@ and light, motion and small once you have found 5 related elements.
 ## Install
 Copy `apps/LittleAlchemy2/` to `sd:/apps/LittleAlchemy2/` and launch it from the Homebrew Channel
 (or unzip `LittleAlchemy2-hbc.zip` onto the root of the SD card and add `icons.bin` to
-`sd:/apps/LittleAlchemy2/` for the real icons). Progress is saved to
+`sd:/apps/LittleAlchemy2/` for the real icons, and the `audio` folder for music and sound). Progress is saved to
 `sd:/apps/LittleAlchemy2/LittleAlchemy2.sav` (saves from `sd:/apps/alchemii/` are picked up).
 
 ## Controls
@@ -31,7 +38,7 @@ Copy `apps/LittleAlchemy2/` to `sd:/apps/LittleAlchemy2/` and launch it from the
 | − | − / L / ZL | X / L | Select / L1 / L2 | Clear the table |
 | 1 | Y | Z | Square | Hint |
 | 2 | X | Y | Triangle | Hide elements with nothing left to make |
-| + | + / R / ZR | Start / R | Start / R1 / R2 | Menu (reset progress, exit) |
+| + | + / R / ZR | Start / R | Start / R1 / R2 | Menu (music, sound effects, reset progress, exit) |
 | HOME | HOME | — | PS | Exit |
 
 A Nunchuk's stick also moves the cursor (Z = A, C = B).
@@ -48,7 +55,8 @@ The Wii U GamePad works under Wii U vWii with a patched fw.img; the Wii U Pro Co
 pairs over Bluetooth like a Wii Remote; the DualShock 3 works over USB.
 
 ## Build
-Requires devkitPPC + libogc (devkitPro) and Python 3.
+Requires devkitPPC + libogc (devkitPro), Tremor (`dkp-pacman -S ppc-libvorbisidec ppc-libogg`)
+and Python 3.
 ```
 ./scripts/build_controller_portlibs.sh   # optional: Wii U GamePad, Wii U Pro, DualShock 3
 make package        # builds LittleAlchemy2.dol and copies it to apps/LittleAlchemy2/boot.dol

@@ -54,7 +54,7 @@ static char toast[96];
 static float toastT;
 static int flashEl = -1;
 static float flashT;
-static int menuOpen, menuSel, confirmReset, quit;
+static int menuOpen, menuSel, confirmReset, quit, musicOn = 1, sfxOn = 1;
 static float lastTapT = -10, holdT;
 static int lastTapItem = -1;
 
@@ -89,6 +89,7 @@ static int next_unlock(void) {
 static void save(void) {
 	static char buf[NEL * 32];
 	int n = 0;
+	n += snprintf(buf, sizeof buf, "#music=%d\n#sfx=%d\n", musicOn, sfxOn);
 	for (int e = 0; e < NEL; e++)
 		if (disc_[e]) n += snprintf(buf + n, sizeof buf - n, "%s\n", ELEMS[e].name);
 	plat_save(buf, n);
@@ -101,10 +102,15 @@ static void load(void) {
 	int n = plat_load(buf, sizeof buf - 1);
 	if (n > 0) {
 		buf[n] = 0;
-		for (char *ln = strtok(buf, "\r\n"); ln; ln = strtok(NULL, "\r\n"))
-			for (int e = 0; e < NEL; e++)
+		for (char *ln = strtok(buf, "\r\n"); ln; ln = strtok(NULL, "\r\n")) {
+			/* settings lines start with '#'; everything else is a discovered element */
+			if (!strncmp(ln, "#music=", 7)) musicOn = atoi(ln + 7) != 0;
+			else if (!strncmp(ln, "#sfx=", 5)) sfxOn = atoi(ln + 5) != 0;
+			else for (int e = 0; e < NEL; e++)
 				if (!strcmp(ELEMS[e].name, ln)) { disc_[e] = 1; break; }
+		}
 	}
+	plat_audio(musicOn, sfxOn);
 	ndisc = 0;
 	for (int e = 0; e < NEL; e++) ndisc += disc_[e];
 	for (int u; (u = next_unlock()) >= 0; ndisc++) disc_[UNLOCKS[u].el] = 1;
@@ -168,7 +174,7 @@ static void discover(int el, int a, int b) {
 	disc_[el] = 1;
 	ndisc++;
 	if (npop < MAXPOP) popq[npop++] = (Pop){el, a, b};
-	if (npop == 1) popT = 0;
+	if (npop == 1) { popT = 0; plat_sfx(SFX_POP); }
 	for (int u; (u = next_unlock()) >= 0;) {
 		disc_[UNLOCKS[u].el] = 1;
 		ndisc++;
@@ -221,21 +227,23 @@ static void hint(void) {
 }
 
 /* ---------------- menu ---------------- */
-enum { M_RESUME, M_CLEAR, M_HINT, M_HIDE, M_RESET, M_QUIT, M_COUNT };
+enum { M_RESUME, M_CLEAR, M_HINT, M_HIDE, M_MUSIC, M_SFX, M_RESET, M_QUIT, M_COUNT };
 static const char *menu_label(int i) {
 	switch (i) {
 	case M_RESUME: return "Resume";
 	case M_CLEAR: return "Clear the table";
 	case M_HINT: return "Get a hint";
 	case M_HIDE: return hideDone ? "Show finished elements" : "Hide finished elements";
+	case M_MUSIC: return musicOn ? "Music: on" : "Music: off";
+	case M_SFX: return sfxOn ? "Sound effects: on" : "Sound effects: off";
 	case M_RESET: return confirmReset ? "Really erase progress? (A)" : "Reset progress";
 	default: return "Exit to Homebrew Channel";
 	}
 }
 #define MX 180
-#define MY 120
+#define MY 64
 #define MWW 280
-#define MIH 40
+#define MIH 38
 static void menu_do(int i) {
 	plat_sfx(SFX_CLICK);
 	if (i != M_RESET) confirmReset = 0;
@@ -252,6 +260,8 @@ static void menu_do(int i) {
 		ndisc = NSTART; rebuild_lib(); save(); scr = scrT = 0; menuOpen = 0;
 		say("Progress erased. Back to the four elements.");
 		break;
+	case M_MUSIC: musicOn = !musicOn; plat_audio(musicOn, sfxOn); save(); break;
+	case M_SFX: sfxOn = !sfxOn; plat_audio(musicOn, sfxOn); save(); plat_sfx(SFX_CLICK); break;
 	case M_QUIT: quit = 1; break;
 	}
 }
@@ -386,7 +396,11 @@ void game_update(const Input *in, float dt) {
 	if (npop) {
 		popT += dt;
 		if ((in->down & (BTN_A | BTN_B)) && popT > .35f) popT = 99;
-		if (popT > 3.2f) { memmove(popq, popq + 1, (npop - 1) * sizeof(Pop)); npop--; popT = 0; }
+		if (popT > 3.2f) {
+			memmove(popq, popq + 1, (npop - 1) * sizeof(Pop));
+			npop--; popT = 0;
+			if (npop) plat_sfx(SFX_POP);
+		}
 		return;
 	}
 
@@ -452,7 +466,7 @@ void game_update(const Input *in, float dt) {
 			int i = hoverItem;
 			if (i == lastTapItem && t - lastTapT < .35f) {
 				int n = add_item(items[i].el, items[i].x + 18, items[i].y + 18);
-				if (n >= 0) { clamp_item(&items[n]); plat_sfx(SFX_PICK); }
+				if (n >= 0) { clamp_item(&items[n]); plat_sfx(SFX_CLONE); }
 				lastTapItem = -1;
 			} else {
 				/* bring to front and grab */

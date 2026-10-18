@@ -50,6 +50,7 @@ const unsigned char *plat_logo(void) {
 /* LA2_ICONS overrides the pack; set it to "" to see the drawn icons */
 const char *plat_icon_path(void) { const char *p = getenv("LA2_ICONS"); return p ? (*p ? p : NULL) : "apps/LittleAlchemy2/icons.bin"; }
 void plat_sfx(int id) { (void)id; }
+void plat_audio(int music, int sfx) { (void)music; (void)sfx; }
 void plat_rumble(int ms) { (void)ms; }
 
 static void shot(const char *name) {

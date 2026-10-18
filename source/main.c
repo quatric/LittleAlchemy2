@@ -28,6 +28,7 @@
 #include <sys/stat.h>
 #include "gfx.h"
 #include "game.h"
+#include "audio.h"
 #include "font_ttf.h"
 #include "logo_rgba.h"
 
@@ -105,7 +106,8 @@ const char *plat_icon_path(void) {
 /* ---------------- sound: short synthesized effects ---------------- */
 #define RATE 32000
 typedef struct { s16 *pcm; int bytes; } Sfx;
-static Sfx sfx[SFX_CLICK + 1];
+static Sfx sfx[SFX_COUNT];
+static int sfxOn = 1, packSfx;
 
 static Sfx synth(float dur, float f0, float f1, float vol, int shape, float f2) {
 	int n = (int)(dur * RATE);
@@ -152,9 +154,18 @@ static void sound_init(void) {
 	sfx[SFX_FAIL] = synth(.18f, 180, 140, .35f, 2, 186);
 	sfx[SFX_DELETE] = synth(.12f, 600, 200, .30f, 0, 0);
 	sfx[SFX_CLICK] = synth(.04f, 900, 900, .25f, 0, 0);
+	sfx[SFX_CLONE] = sfx[SFX_PICK];
+	/* the Little Alchemy 2 music and effects, when the audio pack is on the card */
+	if (sdOK) packSfx = audio_init("sd:/apps/LittleAlchemy2/audio");
+}
+void plat_audio(int music, int effects) {
+	sfxOn = effects;
+	audio_music(music);
 }
 void plat_sfx(int id) {
-	if (id < 0 || id > SFX_CLICK || !sfx[id].pcm) return;
+	if (id == SFX_DISCOVER) audio_note_discovery();
+	if (!sfxOn || (packSfx && audio_sfx(id))) return;
+	if (id < 0 || id >= SFX_COUNT || !sfx[id].pcm) return;
 	int v = ASND_GetFirstUnusedVoice();
 	if (v < 0) return;
 	ASND_SetVoice(v, VOICE_MONO_16BIT, RATE, 0, sfx[id].pcm, sfx[id].bytes, 255, 255, NULL);
@@ -355,9 +366,9 @@ static void input_shutdown(void) {
 int main(void) {
 	VIDEO_Init();
 	input_init();
-	sound_init();
 	sdOK = fatInitDefault();
 	if (sdOK) mkdir("sd:/apps", 0777), mkdir("sd:/apps/LittleAlchemy2", 0777);
+	sound_init();
 	rmode = VIDEO_GetPreferredMode(NULL);
 	xfb[0] = MEM_K0_TO_K1(SYS_AllocateFramebuffer(rmode));
 	xfb[1] = MEM_K0_TO_K1(SYS_AllocateFramebuffer(rmode));
@@ -493,6 +504,7 @@ int main(void) {
 		present();
 	}
 	input_shutdown();
+	audio_shutdown();
 	WPAD_Rumble(0, 0);
 	ASND_End();
 	VIDEO_SetBlack(true);

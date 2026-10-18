@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <app version="1">
 	<name>Little Alchemy 2</name>
-	<version>2.2</version>
+	<version>2.3</version>
 	<release_date>20261018000000</release_date>
 	<short_description>Combine elements, discover the world</short_description>
 	<long_description>Start with water, fire, earth and air. Point with the Wii Remote, drag one element onto another and see what you create. All 720 elements and recipes of Little Alchemy 2 to discover.
@@ -9,8 +9,10 @@
 A: drag  (double-press A to copy)
 B: remove the element under the pointer
 -: clear the table   1: hint   2: hide finished elements
-+: menu   HOME: exit
++: menu (music and sound on/off, reset)   HOME: exit
 Also plays with the Nunchuk, Classic Controller, GameCube controller, Wii U GamePad, Wii U Pro Controller, DualShock 3, USB mouse and USB keyboard.
 
-Progress is saved to the SD card.</long_description>
+With the audio pack in the audio folder it plays Little Alchemy 2's music and sound effects.
+
+Progress and settings are saved to the SD card.</long_description>
 </app>

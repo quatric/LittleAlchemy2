@@ -15,9 +15,10 @@ DATA		:=	data
 
 CFLAGS	= -O2 -Wall -Wno-misleading-indentation $(MACHDEP) $(INCLUDE)
 LDFLAGS	=	$(MACHDEP) -Wl,-Map,$(notdir $@).map
-LIBS	:=	-lfat -lwiikeyboard -lwiiuse -lbte -lasnd -logc -lm
+LIBS	:=	-lfat -lvorbisidec -logg -lwiikeyboard -lwiiuse -lbte -lasnd -logc -lm
 TOPDIR	:=	$(patsubst %/,%,$(dir $(abspath $(firstword $(MAKEFILE_LIST)))))
-LIBDIRS	:=	$(TOPDIR)/portlibs/ppc
+# portlibs/ppc: optional controller libraries; $(PORTLIBS): devkitPro's ppc-libvorbisidec
+LIBDIRS	:=	$(TOPDIR)/portlibs/ppc $(PORTLIBS)
 
 # Wii U GamePad, Wii U Pro Controller and DualShock 3 support, on by default once
 # scripts/build_controller_portlibs.sh has built their libraries into portlibs/

@@ -18,6 +18,9 @@ jobs:
       - name: Install build tools
         run: apt-get update && apt-get install -y --no-install-recommends git python3 make ca-certificates zip
 
+      - name: Install Tremor (Ogg Vorbis decoder)
+        run: dkp-pacman -Sy --noconfirm --needed ppc-libvorbisidec ppc-libogg
+
       - name: Build controller libraries (libwiidrc, libwupc, libsicksaxis)
         run: ./scripts/build_controller_portlibs.sh
 
@@ -25,7 +28,7 @@ jobs:
         run: make package
 
       - name: Package (SD card layout)
-        run: zip -r LittleAlchemy2-hbc.zip apps -x 'apps/LittleAlchemy2/icons.bin'
+        run: zip -r LittleAlchemy2-hbc.zip apps -x 'apps/LittleAlchemy2/icons.bin' 'apps/LittleAlchemy2/audio/*'
 
       - uses: actions/upload-artifact@v4
         with:
