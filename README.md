@@ -23,6 +23,15 @@ Like Little Alchemy 2, a few elements are unlocked by progress instead of being 
 metal (50 discoveries), time (100), big, science and philosophy (150), container (300),
 and light, motion and small once you have found 5 related elements.
 
+## Download
+
+Grab the latest build from the [latest release](../../releases/latest): `LittleAlchemy2-hbc.zip`. Every push to the main branch refreshes it, and tagged versions get their own entry on the [releases page](../../releases).
+
+1. Extract `LittleAlchemy2-hbc.zip` to the root of your SD card (or USB drive).
+2. Open Little Alchemy 2 from the Homebrew Channel.
+
+The icon and audio packs are Little Alchemy 2's own files, so they are not in the zip: see the README to make them.
+
 ## Install
 Copy `apps/LittleAlchemy2/` to `sd:/apps/LittleAlchemy2/` and launch it from the Homebrew Channel
 (or unzip `LittleAlchemy2-hbc.zip` onto the root of the SD card and add `icons.bin` to
