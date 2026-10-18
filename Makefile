@@ -14,11 +14,16 @@ SOURCES		:=	source libinput-wii/source
 DATA		:=	data
 
 CFLAGS	= -O2 -Wall -Wno-misleading-indentation $(MACHDEP) $(INCLUDE)
+# Version for the update check: the release tag when CI builds one, else meta.xml
+APP_VERSION	?=	$(if $(filter refs/tags/%,$(GITHUB_REF)),$(GITHUB_REF_NAME),$(shell sed -n 's:.*<version>\(.*\)</version>.*:\1:p' $(dir $(abspath $(firstword $(MAKEFILE_LIST))))apps/LittleAlchemy2/meta.xml))
+CFLAGS	+=	-DAPP_VERSION=\"$(APP_VERSION)\"
 LDFLAGS	=	$(MACHDEP) -Wl,-Map,$(notdir $@).map
 LIBS	:=	-lfat -lvorbisidec -logg -lwiikeyboard -lwiiuse -lbte -lasnd -logc -lm
+LIBS	:=	-lwiiupdate $(LIBS)
 TOPDIR	:=	$(patsubst %/,%,$(dir $(abspath $(firstword $(MAKEFILE_LIST)))))
 # portlibs/ppc: optional controller libraries; $(PORTLIBS): devkitPro's ppc-libvorbisidec
 LIBDIRS	:=	$(TOPDIR)/portlibs/ppc $(PORTLIBS) $(TOPDIR)/libinput-wii
+LIBDIRS	+=	$(TOPDIR)/libwiiupdate
 
 # Wii U GamePad, Wii U Pro Controller and DualShock 3 support, on by default once
 # scripts/build_controller_portlibs.sh has built their libraries into portlibs/
@@ -68,6 +73,11 @@ export LIBPATHS	:= -L$(LIBOGC_LIB) $(foreach dir,$(LIBDIRS),-L$(dir)/lib)
 $(BUILD): $(SOURCES)/elements.h
 	@[ -d $@ ] || mkdir -p $@
 	@$(MAKE) --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
+
+$(BUILD): libwiiupdate-lib
+.PHONY: libwiiupdate-lib
+libwiiupdate-lib:
+	@$(MAKE) --no-print-directory -C $(TOPDIR)/libwiiupdate
 
 $(SOURCES)/elements.h: tools/elements.txt tools/gen_elements.py
 	@python3 tools/gen_elements.py

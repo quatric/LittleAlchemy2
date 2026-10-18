@@ -15,6 +15,7 @@
 #include <malloc.h>
 #include <string.h>
 #include <sys/stat.h>
+#include <wiiupdate.h>
 #include "gfx.h"
 #include "game.h"
 #include "audio.h"
@@ -245,8 +246,30 @@ static void input_shutdown(void) {
 	INPUT_Shutdown();
 }
 
+/* Update popup, in the settings window's colours */
+static void draw_update_popup(const wiiupdate_popup *p) {
+	const float w = 460, x = (SW - w) / 2, y = 150;
+	const float h = p->progress >= 0 || p->detail[0] ? 170 : 150;
+	fill_rect(0, 0, SW, SH, 0x000000, 110);
+	rrect(x + 2, y + 5, w, h, 6, 0x000000, 70);
+	rrect(x, y, w, h, 6, 0xFCC46B, 255);
+	rrect(x, y, w, 40, 6, 0xFAA620, 255);
+	text(fUI, SW / 2.f, y + 10, p->title, 0x4D4131, 255, AL_CENTER);
+	text(fSmall, SW / 2.f, y + 58, p->text, 0x4D4131, 255, AL_CENTER);
+	float row = y + 86;
+	if (p->progress >= 0) {
+		rrect(x + 30, row + 4, w - 60, 14, 7, 0x4D4131, 255);
+		if (p->progress > 0) rrect(x + 30, row + 4, (w - 60) * p->progress / 100.f, 14, 7, 0x380028, 255);
+		row += 30;
+	} else if (p->detail[0]) {
+		text(fSmall, SW / 2.f, row, p->detail, 0x380028, 255, AL_CENTER);
+		row += 30;
+	}
+	text(fSmall, SW / 2.f, row + 10, p->hint, 0x4D4131, 255, AL_CENTER);
+}
+
 /* ---------------- main loop ---------------- */
-int main(void) {
+int main(int argc, char **argv) {
 	VIDEO_Init();
 	input_init();
 	sdOK = fatInitDefault();
@@ -265,6 +288,8 @@ int main(void) {
 	if (rmode->viTVMode & VI_NON_INTERLACE) VIDEO_WaitVSync();
 
 	INPUT_SetScreenSize(SW, SH);
+	WIIUPDATE_SetAppPath(argc > 0 ? argv[0] : NULL);
+	WIIUPDATE_Start("quatric", "LittleAlchemy2", APP_VERSION);
 
 	gfx_init(font_ttf);
 	game_init();
@@ -277,6 +302,7 @@ int main(void) {
 	int useIR = 0, haveCursor = 0;
 	u32 prevHeld = 0;
 	u64 last = gettime();
+	int popupShown = 0;
 	while (!game_quit()) {
 		INPUT_Update();
 		u64 now = gettime();
@@ -329,8 +355,19 @@ int main(void) {
 		else if (!useIR && haveCursor) { in.x = curX; in.y = curY; in.valid = 1; }
 		else { in.x = irX; in.y = irY; in.valid = irValid; }
 
+		/* the update popup has the controls while it is up, and for the frame it closes on */
+		wiiupdate_popup pop;
+		int ust = WIIUPDATE_Popup(INPUT_ButtonsDown(), &pop);
+		if (ust == WIIUPDATE_POPUP_EXIT) break;
+		if (ust == WIIUPDATE_POPUP_OPEN || popupShown) {
+			in.held = in.down = in.up = 0;
+			in.wheel = 0;
+		}
+		popupShown = ust == WIIUPDATE_POPUP_OPEN;
+
 		game_update(&in, dt);
 		game_draw();
+		if (popupShown) draw_update_popup(&pop);
 		present();
 	}
 	audio_shutdown();
