@@ -19,7 +19,8 @@ jobs:
         run: apt-get update && apt-get install -y --no-install-recommends git python3 make ca-certificates zip
 
       - name: Install Tremor (Ogg Vorbis decoder)
-        run: dkp-pacman -Sy --noconfirm --needed ppc-libvorbisidec ppc-libogg
+        # the devkitppc image already ships it; only go to the package server if it is missing
+        run: dkp-pacman -Q ppc-libvorbisidec ppc-libogg || dkp-pacman -Sy --noconfirm --needed ppc-libvorbisidec ppc-libogg
 
       - name: Build controller libraries (libwiidrc, libwupc, libsicksaxis)
         run: ./scripts/build_controller_portlibs.sh
