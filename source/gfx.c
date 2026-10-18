@@ -36,15 +36,17 @@ uint32_t shade(uint32_t c, float f) {
 	return mix(c, 0xFFFFFF, f - 1.f);
 }
 
+/* source-over with packed red/blue and green lanes: two multiplies per pixel */
+static inline uint32_t mixpx(uint32_t d, uint32_t c, unsigned a1) {
+	unsigned ia = 256 - a1;
+	uint32_t rb = (((d & 0xFF00FF) * ia + (c & 0xFF00FF) * a1) >> 8) & 0xFF00FF;
+	uint32_t g = (((d & 0x00FF00) * ia + (c & 0x00FF00) * a1) >> 8) & 0x00FF00;
+	return rb | g;
+}
 static inline void bl(int x, int y, uint32_t c, int a) {
 	uint32_t *p = &tg[y * tw + x];
 	if (a >= 255) { *p = c; return; }
-	uint32_t d = *p;
-	int dr = CR(d), dg = CG(d), db = CB(d);
-	dr += ((int)CR(c) - dr) * a >> 8;
-	dg += ((int)CG(c) - dg) * a >> 8;
-	db += ((int)CB(c) - db) * a >> 8;
-	*p = RGB(dr, dg, db);
+	*p = mixpx(*p, c, a + (a >> 7));
 }
 void blend(int x, int y, uint32_t c, int a) {
 	if (x < cx0 || x >= cx1 || y < cy0 || y >= cy1 || a <= 0) return;
@@ -53,8 +55,20 @@ void blend(int x, int y, uint32_t c, int a) {
 void fill_rect(int x, int y, int w, int h, uint32_t c, int a) {
 	int x0 = x < cx0 ? cx0 : x, x1 = x + w > cx1 ? cx1 : x + w;
 	int y0 = y < cy0 ? cy0 : y, y1 = y + h > cy1 ? cy1 : y + h;
-	if (a <= 0) return;
-	for (int j = y0; j < y1; j++) for (int i = x0; i < x1; i++) bl(i, j, c, a);
+	if (a <= 0 || x1 <= x0) return;
+	if (a >= 255) {
+		for (int j = y0; j < y1; j++) { uint32_t *p = &tg[j * tw]; for (int i = x0; i < x1; i++) p[i] = c; }
+		return;
+	}
+	unsigned a1 = a + (a >> 7), ia = 256 - a1;
+	uint32_t crb = (c & 0xFF00FF) * a1, cg = (c & 0x00FF00) * a1;
+	for (int j = y0; j < y1; j++) {
+		uint32_t *p = &tg[j * tw];
+		for (int i = x0; i < x1; i++) {
+			uint32_t d = p[i];
+			p[i] = ((((d & 0xFF00FF) * ia + crb) >> 8) & 0xFF00FF) | ((((d & 0x00FF00) * ia + cg) >> 8) & 0x00FF00);
+		}
+	}
 }
 
 /* coverage-driven fill over a bounding box: cov() returns the signed distance inside (px) */

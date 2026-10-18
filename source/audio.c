@@ -237,7 +237,8 @@ int audio_init(const char *base) {
 		fclose(f);
 		srand(gettime());
 		running = 1;
-		LWP_CreateThread(&musicThread, music_main, NULL, NULL, 0x8000, 70);
+		/* below the main thread (64): decoding runs while the game waits for vsync, never instead of a frame */
+		LWP_CreateThread(&musicThread, music_main, NULL, NULL, 0x8000, 32);
 	}
 	return n;
 }

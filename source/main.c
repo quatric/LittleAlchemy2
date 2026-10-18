@@ -40,18 +40,29 @@ static inline u32 yuvpair(u32 a, u32 b) {
 	return (y0 << 24) | (cb << 16) | (y1 << 8) | cr;
 }
 
+/* What each of the two frame buffers was last drawn from, so unchanged rows are skipped. */
+static uint32_t shown[2][SH][SW];
+static int shownOK[2];
+
 static void present(void) {
 	int H2 = rmode->xfbHeight, W2 = rmode->fbWidth / 2;
 	u32 *dst = xfb[fbi];
-	for (int y = 0, last = -1; y < H2; y++) {
+	if (!shownOK[fbi]) { memset(shown[fbi], 0xFF, sizeof shown[fbi]); shownOK[fbi] = 1; }
+	/* the buffers are cached memory: write rows, then flush once */
+	for (int y = 0, last = -1, same = 0; y < H2; y++) {
 		int sy = y * SH / H2;
 		if (sy != last) {
 			last = sy;
 			const u32 *src = fb[sy];
-			for (int x = 0; x < SW / 2; x++) yuvrow[x] = yuvpair(src[x * 2], src[x * 2 + 1]);
+			same = !memcmp(src, shown[fbi][sy], SW * 4);
+			if (!same) {
+				for (int x = 0; x < SW / 2; x++) yuvrow[x] = yuvpair(src[x * 2], src[x * 2 + 1]);
+				memcpy(shown[fbi][sy], src, SW * 4);
+			}
 		}
-		memcpy(dst + y * W2, yuvrow, SW / 2 * 4);
+		if (!same) memcpy(dst + y * W2, yuvrow, SW / 2 * 4);
 	}
+	DCFlushRange(dst, VIDEO_GetFrameBufferSize(rmode));
 	VIDEO_SetNextFramebuffer(dst);
 	VIDEO_Flush();
 	VIDEO_WaitVSync();
@@ -276,11 +287,13 @@ int main(int argc, char **argv) {
 	if (sdOK) mkdir("sd:/apps", 0777), mkdir("sd:/apps/LittleAlchemy2", 0777);
 	sound_init();
 	rmode = VIDEO_GetPreferredMode(NULL);
-	xfb[0] = MEM_K0_TO_K1(SYS_AllocateFramebuffer(rmode));
-	xfb[1] = MEM_K0_TO_K1(SYS_AllocateFramebuffer(rmode));
+	xfb[0] = SYS_AllocateFramebuffer(rmode);
+	xfb[1] = SYS_AllocateFramebuffer(rmode);
 	VIDEO_Configure(rmode);
 	VIDEO_ClearFrameBuffer(rmode, xfb[0], COLOR_BLACK);
 	VIDEO_ClearFrameBuffer(rmode, xfb[1], COLOR_BLACK);
+	DCFlushRange(xfb[0], VIDEO_GetFrameBufferSize(rmode));
+	DCFlushRange(xfb[1], VIDEO_GetFrameBufferSize(rmode));
 	VIDEO_SetNextFramebuffer(xfb[0]);
 	VIDEO_SetBlack(false);
 	VIDEO_Flush();
@@ -370,6 +383,9 @@ int main(int argc, char **argv) {
 		if (popupShown) draw_update_popup(&pop);
 		present();
 	}
+	/* stop the update check's network thread before anything it uses goes away */
+	WIIUPDATE_Cancel();
+	WIIUPDATE_Wait(4000);
 	audio_shutdown();
 	WPAD_Rumble(0, 0);
 	input_shutdown();

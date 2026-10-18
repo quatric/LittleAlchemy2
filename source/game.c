@@ -347,9 +347,20 @@ static void build_bg(void) {
 	memcpy(bg, fb, sizeof bg);
 }
 
+/* the discovery card's backdrop and glow never change: drawn once at start-up, then copied */
+static uint32_t popbg[SH][SW];
+static void build_popbg(void) {
+	const float cx = SW / 2.f, cy = 236;
+	gfx_target(&popbg[0][0], SW, SH);
+	fill_rect(0, 0, SW, SH, 0x2A002A, 255);
+	for (int r = 240; r > 20; r -= 10) disc(cx, cy, r, 0x5A1E50, 11);
+	gfx_screen();
+}
+
 void game_init(void) {
 	srand(12345);
 	build_bg();
+	build_popbg();
 	load();
 	static const float sx[4] = {160, 340, 160, 340}, sy[4] = {150, 150, 320, 320};
 	for (int i = 0; i < NSTART && i < 4; i++) { int n = add_item(STARTERS[i], sx[i], sy[i]); items[n].pop = .0f; }
@@ -614,13 +625,13 @@ static void draw_popup(void) {
 	if (popT > 90) out = 0;
 	float k = a * out;
 	float cx = SW / 2.f, cy = 236;
-	fill_rect(0, 0, SW, SH, 0x2A002A, (int)(255 * k));
+	if (k >= .99f) memcpy(fb, popbg, sizeof fb);
+	else for (int y = 0; y < SH; y++) for (int x = 0; x < SW; x++) blend(x, y, popbg[y][x], (int)(255 * k));
 	for (int i = 0; i < 18; i++) {
 		float a0 = t * .12f + i * 3.1416f / 9, a1 = a0 + 3.1416f / 18;
 		float tri[6] = {cx, cy, cx + cosf(a0) * 700, cy + sinf(a0) * 700, cx + cosf(a1) * 700, cy + sinf(a1) * 700};
 		poly_fill(tri, 3, 0x1C001C, (int)(150 * k));
 	}
-	for (int r = 240; r > 20; r -= 10) disc(cx, cy, r, 0x5A1E50, (int)(11 * k));
 	if (k < .99f) return;
 	float s = popT < .35f ? .7f + .3f * sinf(fminf(popT / .35f, 1) * 1.5708f) + sinf(popT / .35f * 3.1416f) * .08f : 1;
 	char nm[64];
