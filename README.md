@@ -59,9 +59,11 @@ Requires devkitPPC + libogc (devkitPro), Tremor (`dkp-pacman -S ppc-libvorbiside
 and Python 3.
 ```
 ./scripts/build_controller_portlibs.sh   # optional: Wii U GamePad, Wii U Pro, DualShock 3
-make package        # builds LittleAlchemy2.dol and copies it to apps/LittleAlchemy2/boot.dol
+make package        # builds LittleAlchemy2.dol and LittleAlchemy2-xz.dol, copies the latter to apps/LittleAlchemy2/boot.dol
 make run            # sends it to a Wii with wiiload
 ```
+`make` also writes `LittleAlchemy2-xz.dol`, the same program packed into a self-extracting `.dol` a fraction of the size; `make package` uses it as `boot.dol`. The first build downloads and builds [dolxz](https://github.com/FIX94/dolxz), which needs a host C compiler and liblzma (Debian/Ubuntu: `apt-get install liblzma-dev pkg-config`; macOS: `brew install xz`). `make NO_DOLXZ=1` skips this and uses the plain `.dol`.
+
 Elements, recipes and unlock rules live in `tools/elements.txt`; `tools/gen_elements.py`
 validates that every element is reachable and regenerates `source/elements.h`.
 
