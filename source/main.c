@@ -5,18 +5,7 @@
 #include <gccore.h>
 #include <unistd.h>
 #include <wiiuse/wpad.h>
-#include <ogc/usb.h>
-#include <ogc/usbmouse.h>
-#include <wiikeyboard/usbkeyboard.h>
-#ifdef HAVE_WIIDRC
-#include <wiidrc/wiidrc.h>
-#endif
-#ifdef HAVE_WUPC
-#include <wupc/wupc.h>
-#endif
-#ifdef HAVE_SICKSAXIS
-#include <sicksaxis.h>
-#endif
+#include <input_wii.h>
 #include <asndlib.h>
 #include <fat.h>
 #include <ogc/lwp_watchdog.h>
@@ -176,20 +165,22 @@ void plat_rumble(int ms) {
 }
 
 /* ---------------- input ---------------- */
-/* Classic Controller and Wii U Pro Controller buttons (they share the bit layout) */
-static u32 map_classic(u32 b) {
+/* Devices come from libinput-wii; this maps them onto the game's buttons and cursor. */
+static u32 map_buttons(u32 b) {
 	u32 o = 0;
-	if (b & WPAD_CLASSIC_BUTTON_A) o |= BTN_A;
-	if (b & WPAD_CLASSIC_BUTTON_B) o |= BTN_B;
-	if (b & WPAD_CLASSIC_BUTTON_Y) o |= BTN_1;
-	if (b & WPAD_CLASSIC_BUTTON_X) o |= BTN_2;
-	if (b & (WPAD_CLASSIC_BUTTON_PLUS | WPAD_CLASSIC_BUTTON_FULL_R | WPAD_CLASSIC_BUTTON_ZR)) o |= BTN_PLUS;
-	if (b & (WPAD_CLASSIC_BUTTON_MINUS | WPAD_CLASSIC_BUTTON_FULL_L | WPAD_CLASSIC_BUTTON_ZL)) o |= BTN_MINUS;
-	if (b & WPAD_CLASSIC_BUTTON_HOME) o |= BTN_HOME;
-	if (b & WPAD_CLASSIC_BUTTON_UP) o |= BTN_UP;
-	if (b & WPAD_CLASSIC_BUTTON_DOWN) o |= BTN_DOWN;
-	if (b & WPAD_CLASSIC_BUTTON_LEFT) o |= BTN_LEFT;
-	if (b & WPAD_CLASSIC_BUTTON_RIGHT) o |= BTN_RIGHT;
+	if (b & WPAD_BUTTON_A) o |= BTN_A;
+	if (b & WPAD_BUTTON_B) o |= BTN_B;
+	if (b & WPAD_BUTTON_UP) o |= BTN_UP;
+	if (b & WPAD_BUTTON_DOWN) o |= BTN_DOWN;
+	if (b & WPAD_BUTTON_LEFT) o |= BTN_LEFT;
+	if (b & WPAD_BUTTON_RIGHT) o |= BTN_RIGHT;
+	if (b & WPAD_BUTTON_PLUS) o |= BTN_PLUS;
+	if (b & WPAD_BUTTON_MINUS) o |= BTN_MINUS;
+	if (b & WPAD_BUTTON_1) o |= BTN_1;
+	if (b & WPAD_BUTTON_2) o |= BTN_2;
+	if (b & WPAD_BUTTON_HOME) o |= BTN_HOME;
+	if (b & INPUT_BUTTON_Z) o |= BTN_A;
+	if (b & INPUT_BUTTON_C) o |= BTN_B;
 	return o;
 }
 
@@ -200,166 +191,57 @@ static void stick(float x, float y) {
 	if (fabsf(y) < .18f) y = 0;
 	if (x * x + y * y > stickX * stickX + stickY * stickY) { stickX = clampf(x, -1, 1); stickY = clampf(y, -1, 1); }
 }
-static void stick_js(const joystick_t *js) {
-	float a = js->ang * 3.14159265f / 180;
-	stick(js->mag * sinf(a), -js->mag * cosf(a));
-}
-#if defined(HAVE_WIIDRC) || defined(HAVE_WUPC)
-/* Wii U GamePad and Pro Controller sticks report roughly -900..900 */
-static void stick_wiiu(s16 x, s16 y) { stick(x / 900.f, -y / 900.f); }
-#endif
-
-#ifdef HAVE_WIIDRC
-static u32 map_drc(u32 b) {
-	u32 o = 0;
-	if (b & WIIDRC_BUTTON_A) o |= BTN_A;
-	if (b & WIIDRC_BUTTON_B) o |= BTN_B;
-	if (b & WIIDRC_BUTTON_Y) o |= BTN_1;
-	if (b & WIIDRC_BUTTON_X) o |= BTN_2;
-	if (b & (WIIDRC_BUTTON_PLUS | WIIDRC_BUTTON_R | WIIDRC_BUTTON_ZR)) o |= BTN_PLUS;
-	if (b & (WIIDRC_BUTTON_MINUS | WIIDRC_BUTTON_L | WIIDRC_BUTTON_ZL)) o |= BTN_MINUS;
-	if (b & WIIDRC_BUTTON_HOME) o |= BTN_HOME;
-	if (b & WIIDRC_BUTTON_UP) o |= BTN_UP;
-	if (b & WIIDRC_BUTTON_DOWN) o |= BTN_DOWN;
-	if (b & WIIDRC_BUTTON_LEFT) o |= BTN_LEFT;
-	if (b & WIIDRC_BUTTON_RIGHT) o |= BTN_RIGHT;
-	return o;
-}
-#endif
-
-#ifdef HAVE_SICKSAXIS
-static struct ss_device ds3;
-static int ds3OK;
-static u64 ds3Retry;
-static u32 poll_ds3(void) {
-	if (!ds3OK) return 0;
-	if (!ss_is_connected(&ds3)) {
-		/* look for a newly plugged-in controller every couple of seconds */
-		u64 now = gettime();
-		if (now >= ds3Retry) {
-			ds3Retry = now + secs_to_ticks(2);
-			if (ss_open(&ds3) > 0) ss_start_reading(&ds3);
-		}
-		return 0;
-	}
-	const struct SS_BUTTONS *b = &ds3.pad.buttons;
-	u32 o = 0;
-	if (b->cross) o |= BTN_A;
-	if (b->circle) o |= BTN_B;
-	if (b->square) o |= BTN_1;
-	if (b->triangle) o |= BTN_2;
-	if (b->start || b->R1 || b->R2) o |= BTN_PLUS;
-	if (b->select || b->L1 || b->L2) o |= BTN_MINUS;
-	if (b->PS) o |= BTN_HOME;
-	if (b->up) o |= BTN_UP;
-	if (b->down) o |= BTN_DOWN;
-	if (b->left) o |= BTN_LEFT;
-	if (b->right) o |= BTN_RIGHT;
-	stick((ds3.pad.left_analog.x - 128) / 127.f, (ds3.pad.left_analog.y - 128) / 127.f);
-	stick((ds3.pad.right_analog.x - 128) / 127.f, (ds3.pad.right_analog.y - 128) / 127.f);
-	return o;
-}
-#endif
-
-/* USB keyboard: arrows, Enter = A, Backspace = B, X / Y = 1 / 2, + / - = menu / clear, Esc = exit */
-static volatile u32 kbdHeld;
-static lwp_t kbdThread = LWP_THREAD_NULL;
-static volatile int kbdRun;
-static void kbd_event(USBKeyboard_event ev) {
-	if (ev.type != USBKEYBOARD_PRESSED && ev.type != USBKEYBOARD_RELEASED) return;
-	u32 b = 0;
-	switch (ev.keyCode) {
-	case 0x52: b = BTN_UP; break;
-	case 0x51: b = BTN_DOWN; break;
-	case 0x50: b = BTN_LEFT; break;
-	case 0x4F: b = BTN_RIGHT; break;
-	case 0x28: case 0x58: case 0x2C: b = BTN_A; break;   /* Enter, keypad Enter, Space */
-	case 0x2A: case 0x4C: b = BTN_B; break;              /* Backspace, Delete */
-	case 0x1B: case 0x0B: b = BTN_1; break;              /* X, H (hint) */
-	case 0x1C: b = BTN_2; break;                         /* Y */
-	case 0x2E: case 0x57: case 0x10: b = BTN_PLUS; break; /* =/+, keypad +, M (menu) */
-	case 0x2D: case 0x56: case 0x06: b = BTN_MINUS; break; /* -, keypad -, C (clear) */
-	case 0x29: case 0x4A: b = BTN_HOME; break;           /* Esc, Home */
-	}
-	if (ev.type == USBKEYBOARD_PRESSED) kbdHeld |= b;
-	else kbdHeld &= ~b;
-}
-static void *kbd_thread(void *arg) {
-	(void)arg;
-	while (kbdRun) {
-		if (!USBKeyboard_IsConnected() && USBKeyboard_Open(kbd_event)) {
-			/* blink the keyboard's lights to show it was picked up */
-			kbdHeld = 0;
-			for (int i = 0; i < 3; i++) { USBKeyboard_SetLed(i, 1); usleep(250000); }
-			for (int i = 0; i < 3; i++) USBKeyboard_SetLed(i, 0);
-		}
-		USBKeyboard_Scan();
-		usleep(400);
-	}
-	return NULL;
-}
-
-/* USB mouse: moves the pointer; left = A, right = B, middle = menu, wheel scrolls */
-static int mouseOK;
-static u64 mouseRetry;
-static u32 poll_mouse(float *dx, float *dy, float *wheel) {
-	static u32 buttons;
-	u64 now = gettime();
-	if (!mouseOK || !MOUSE_IsConnected()) {
-		buttons = 0;
-		if (now < mouseRetry) return 0;
-		mouseRetry = now + secs_to_ticks(1);
-		if (mouseOK) MOUSE_Deinit();
-		mouseOK = MOUSE_Init() >= 0;
-		return 0;
-	}
-	mouse_event ev;
-	for (int n = 0; n < 64 && MOUSE_GetEvent(&ev) > 0; n++) {
-		*dx += ev.rx; *dy += ev.ry;
-		if (ev.rz > 0) *wheel -= 1;  /* wheel away from you: towards the start of the list */
-		if (ev.rz < 0) *wheel += 1;
-		buttons = 0;
-		if (ev.button & 1) buttons |= BTN_A;
-		if (ev.button & 2) buttons |= BTN_B;
-		if (ev.button & 4) buttons |= BTN_PLUS;
-	}
-	return buttons;
+/* The library's -1..1 range, rescaled to the divisors this game always used
+ * (GameCube 80 / C-stick 70, DualShock 3 127); screen y grows downward. */
+static void lib_stick(int which) {
+	float x, y, k = 1;
+	const char *src;
+	if (INPUT_Stick(which, &x, &y, &src) <= 0) return;
+	if (!strcmp(src, "GameCube")) k = which == INPUT_STICK_LEFT ? 70.f / 80.f : 60.f / 70.f;
+	else if (!strcmp(src, "DualShock 3")) k = 110.f / 127.f;
+	stick(x * k, -y * k);
 }
 
 static void input_init(void) {
-	PAD_Init();
-#ifdef HAVE_WUPC
-	WUPC_Init();
-#endif
-	WPAD_Init();
-#ifdef HAVE_WIIDRC
-	WiiDRC_Init();
-#endif
-	USB_Initialize();
-#ifdef HAVE_SICKSAXIS
-	if (ss_init() >= 0 && ss_initialize(&ds3) >= 0) {
-		ds3OK = 1;
-		if (ss_open(&ds3) > 0) ss_start_reading(&ds3);
-	}
-#endif
-	USBKeyboard_Initialize();
-	kbdRun = 1;
-	LWP_CreateThread(&kbdThread, kbd_thread, NULL, NULL, 0x4000, 0x7F);
-	mouseOK = MOUSE_Init() >= 0;
+	INPUT_Init();
+	/* GameCube: Start / R = menu, X / L = clear, Z = 1, Y = 2 */
+	INPUT_GameCubeMapClear();
+	INPUT_GameCubeMapSet(PAD_BUTTON_A, WPAD_BUTTON_A);
+	INPUT_GameCubeMapSet(PAD_BUTTON_B, WPAD_BUTTON_B);
+	INPUT_GameCubeMapSet(PAD_BUTTON_UP, WPAD_BUTTON_UP);
+	INPUT_GameCubeMapSet(PAD_BUTTON_DOWN, WPAD_BUTTON_DOWN);
+	INPUT_GameCubeMapSet(PAD_BUTTON_LEFT, WPAD_BUTTON_LEFT);
+	INPUT_GameCubeMapSet(PAD_BUTTON_RIGHT, WPAD_BUTTON_RIGHT);
+	INPUT_GameCubeMapSet(PAD_BUTTON_START | PAD_TRIGGER_R, WPAD_BUTTON_PLUS);
+	INPUT_GameCubeMapSet(PAD_BUTTON_X | PAD_TRIGGER_L, WPAD_BUTTON_MINUS);
+	INPUT_GameCubeMapSet(PAD_TRIGGER_Z, WPAD_BUTTON_1);
+	INPUT_GameCubeMapSet(PAD_BUTTON_Y, WPAD_BUTTON_2);
+	/* USB keyboard: arrows, Enter = A, Backspace = B, X / Y = 1 / 2, + / - = menu / clear, Esc = exit */
+	INPUT_KeyboardMapClear();
+	INPUT_KeyboardMapSet(0x52, WPAD_BUTTON_UP);
+	INPUT_KeyboardMapSet(0x51, WPAD_BUTTON_DOWN);
+	INPUT_KeyboardMapSet(0x50, WPAD_BUTTON_LEFT);
+	INPUT_KeyboardMapSet(0x4F, WPAD_BUTTON_RIGHT);
+	INPUT_KeyboardMapSet(0x28, WPAD_BUTTON_A);     /* Enter */
+	INPUT_KeyboardMapSet(0x58, WPAD_BUTTON_A);     /* keypad Enter */
+	INPUT_KeyboardMapSet(0x2C, WPAD_BUTTON_A);     /* Space */
+	INPUT_KeyboardMapSet(0x2A, WPAD_BUTTON_B);     /* Backspace */
+	INPUT_KeyboardMapSet(0x4C, WPAD_BUTTON_B);     /* Delete */
+	INPUT_KeyboardMapSet(0x1B, WPAD_BUTTON_1);     /* X */
+	INPUT_KeyboardMapSet(0x0B, WPAD_BUTTON_1);     /* H (hint) */
+	INPUT_KeyboardMapSet(0x1C, WPAD_BUTTON_2);     /* Y */
+	INPUT_KeyboardMapSet(0x2E, WPAD_BUTTON_PLUS);  /* =/+ */
+	INPUT_KeyboardMapSet(0x57, WPAD_BUTTON_PLUS);  /* keypad + */
+	INPUT_KeyboardMapSet(0x10, WPAD_BUTTON_PLUS);  /* M (menu) */
+	INPUT_KeyboardMapSet(0x2D, WPAD_BUTTON_MINUS); /* - */
+	INPUT_KeyboardMapSet(0x56, WPAD_BUTTON_MINUS); /* keypad - */
+	INPUT_KeyboardMapSet(0x06, WPAD_BUTTON_MINUS); /* C (clear) */
+	INPUT_KeyboardMapSet(0x29, WPAD_BUTTON_HOME);  /* Esc */
+	INPUT_KeyboardMapSet(0x4A, WPAD_BUTTON_HOME);  /* Home */
 }
 
 static void input_shutdown(void) {
-	kbdRun = 0;
-	if (kbdThread != LWP_THREAD_NULL) LWP_JoinThread(kbdThread, NULL);
-	USBKeyboard_Close();
-	USBKeyboard_Deinitialize();
-	if (mouseOK) MOUSE_Deinit();
-#ifdef HAVE_SICKSAXIS
-	if (ds3OK) { if (ss_is_connected(&ds3)) ss_stop_reading(&ds3); ss_close(&ds3); }
-#endif
-#ifdef HAVE_WUPC
-	WUPC_Shutdown();
-#endif
+	INPUT_Shutdown();
 }
 
 /* ---------------- main loop ---------------- */
@@ -381,8 +263,7 @@ int main(void) {
 	VIDEO_WaitVSync();
 	if (rmode->viTVMode & VI_NON_INTERLACE) VIDEO_WaitVSync();
 
-	WPAD_SetDataFormat(WPAD_CHAN_ALL, WPAD_FMT_BTNS_ACC_IR);
-	WPAD_SetVRes(WPAD_CHAN_ALL, SW, SH);
+	INPUT_SetScreenSize(SW, SH);
 
 	gfx_init(font_ttf);
 	game_init();
@@ -396,8 +277,7 @@ int main(void) {
 	u32 prevHeld = 0;
 	u64 last = gettime();
 	while (!game_quit()) {
-		WPAD_ScanPads();
-		PAD_ScanPads();
+		INPUT_Update();
 		u64 now = gettime();
 		float dt = (float)ticks_to_microsecs(now - last) / 1e6f;
 		last = now;
@@ -405,81 +285,30 @@ int main(void) {
 		if (dt < .001f) dt = .001f;
 		if (rumbleUntil && now > rumbleUntil) { WPAD_Rumble(0, 0); rumbleUntil = 0; }
 
-		u32 held = 0;
+		u32 held = map_buttons(INPUT_ButtonsHeld());
 		stickX = stickY = 0;
+		lib_stick(INPUT_STICK_LEFT);
+		lib_stick(INPUT_STICK_RIGHT);
 
-		/* Wii Remotes (pointer from the first one aimed at the screen) and their expansions */
-		int irValid = 0;
-		for (int ch = 0; ch < 4; ch++) {
-			WPADData *wd = WPAD_Data(ch);
-			u32 wh = WPAD_ButtonsHeld(ch);
-			if (wh & WPAD_BUTTON_A) held |= BTN_A;
-			if (wh & WPAD_BUTTON_B) held |= BTN_B;
-			if (wh & WPAD_BUTTON_UP) held |= BTN_UP;
-			if (wh & WPAD_BUTTON_DOWN) held |= BTN_DOWN;
-			if (wh & WPAD_BUTTON_LEFT) held |= BTN_LEFT;
-			if (wh & WPAD_BUTTON_RIGHT) held |= BTN_RIGHT;
-			if (wh & WPAD_BUTTON_PLUS) held |= BTN_PLUS;
-			if (wh & WPAD_BUTTON_MINUS) held |= BTN_MINUS;
-			if (wh & WPAD_BUTTON_1) held |= BTN_1;
-			if (wh & WPAD_BUTTON_2) held |= BTN_2;
-			if (wh & WPAD_BUTTON_HOME) held |= BTN_HOME;
-			if (!wd) continue;
-			if (wd->exp.type == WPAD_EXP_CLASSIC) { held |= map_classic(wh); stick_js(&wd->exp.classic.ljs); stick_js(&wd->exp.classic.rjs); }
-			if (wd->exp.type == WPAD_EXP_NUNCHUK) {
-				stick_js(&wd->exp.nunchuk.js);
-				if (wh & WPAD_NUNCHUK_BUTTON_Z) held |= BTN_A;
-				if (wh & WPAD_NUNCHUK_BUTTON_C) held |= BTN_B;
-			}
-			if (!irValid && wd->ir.valid) {
-				irValid = 1;
-				float nx = irX + (wd->ir.x - irX) * .6f, ny = irY + (wd->ir.y - irY) * .6f;
-				/* take the pointer back only when the remote actually moves */
-				if (!useIR && fabsf(wd->ir.x - irX) + fabsf(wd->ir.y - irY) > 6) useIR = 1;
-				irX = nx; irY = ny;
-			}
+		/* Wii Remote pointer (from the first one aimed at the screen) */
+		float px, py;
+		int irValid = INPUT_Pointer(&px, &py);
+		if (irValid) {
+			float nx = irX + (px - irX) * .6f, ny = irY + (py - irY) * .6f;
+			/* take the pointer back only when the remote actually moves */
+			if (!useIR && fabsf(px - irX) + fabsf(py - irY) > 6) useIR = 1;
+			irX = nx; irY = ny;
 		}
 
-		/* GameCube controllers */
-		for (int ch = 0; ch < 4; ch++) {
-			u16 ph = PAD_ButtonsHeld(ch);
-			if (ph & PAD_BUTTON_A) held |= BTN_A;
-			if (ph & PAD_BUTTON_B) held |= BTN_B;
-			if (ph & PAD_BUTTON_UP) held |= BTN_UP;
-			if (ph & PAD_BUTTON_DOWN) held |= BTN_DOWN;
-			if (ph & PAD_BUTTON_LEFT) held |= BTN_LEFT;
-			if (ph & PAD_BUTTON_RIGHT) held |= BTN_RIGHT;
-			if (ph & (PAD_BUTTON_START | PAD_TRIGGER_R)) held |= BTN_PLUS;
-			if (ph & (PAD_BUTTON_X | PAD_TRIGGER_L)) held |= BTN_MINUS;
-			if (ph & PAD_TRIGGER_Z) held |= BTN_1;
-			if (ph & PAD_BUTTON_Y) held |= BTN_2;
-			stick(PAD_StickX(ch) / 80.f, -PAD_StickY(ch) / 80.f);
-			stick(PAD_SubStickX(ch) / 70.f, -PAD_SubStickY(ch) / 70.f);
-		}
-
-#ifdef HAVE_WUPC
-		WUPC_UpdateButtonStats();
-		for (int ch = 0; ch < 4; ch++) {
-			if (!WUPC_Data(ch)) continue;
-			held |= map_classic(WUPC_ButtonsHeld(ch));
-			stick_wiiu(WUPC_lStickX(ch), WUPC_lStickY(ch));
-			stick_wiiu(WUPC_rStickX(ch), WUPC_rStickY(ch));
-		}
-#endif
-#ifdef HAVE_WIIDRC
-		if (WiiDRC_Inited() && WiiDRC_Connected() && WiiDRC_ScanPads()) {
-			held |= map_drc(WiiDRC_ButtonsHeld());
-			stick_wiiu(WiiDRC_lStickX(), WiiDRC_lStickY());
-			stick_wiiu(WiiDRC_rStickX(), WiiDRC_rStickY());
-		}
-#endif
-#ifdef HAVE_SICKSAXIS
-		held |= poll_ds3();
-#endif
-		held |= kbdHeld;
-
-		float mdx = 0, mdy = 0, wheel = 0;
-		held |= poll_mouse(&mdx, &mdy, &wheel);
+		/* USB mouse: moves the pointer; left = A, right = B, middle = menu, wheel scrolls */
+		int mx, my, mz;
+		INPUT_MouseDelta(&mx, &my, &mz);
+		float mdx = mx, mdy = my;
+		float wheel = mz > 0 ? -1 : mz < 0 ? 1 : 0;  /* wheel away from you: towards the start of the list */
+		u8 mb = INPUT_MouseButtonsHeld();
+		if (mb & INPUT_MOUSE_LEFT) held |= BTN_A;
+		if (mb & INPUT_MOUSE_RIGHT) held |= BTN_B;
+		if (mb & INPUT_MOUSE_MIDDLE) held |= BTN_PLUS;
 
 		/* sticks (squared for fine control) and the mouse drive the virtual cursor */
 		if (stickX || stickY || mdx || mdy) {
@@ -503,9 +332,9 @@ int main(void) {
 		game_draw();
 		present();
 	}
-	input_shutdown();
 	audio_shutdown();
 	WPAD_Rumble(0, 0);
+	input_shutdown();
 	ASND_End();
 	VIDEO_SetBlack(true);
 	VIDEO_Flush();
