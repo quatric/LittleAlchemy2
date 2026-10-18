@@ -322,8 +322,18 @@ static void build_bg(void) {
 	for (int y = 0; y < SH; y++) for (int x = 0; x < SW; x++) fb[y][x] = x >= PANX ? C_SIDE : C_WORK;
 	/* soft shadow where the list meets the workspace */
 	for (int k = 0; k < 8; k++) fill_rect(PANX - 1 - k, 0, 1, SH, 0x1B001C, 90 - k * 11);
-	/* faint wordmark in the corner of the workspace */
-	text(fHuge, PANX - 22, SH - 64, "Little Alchemy 2", mix(C_WORK, C_GOLD, .13f), 255, AL_RIGHT);
+	/* the Little Alchemy 2 logo in the corner of the workspace */
+	const unsigned char *lg = plat_logo();
+	if (lg) {
+		Sprite s = {lg[0] << 8 | lg[1], lg[2] << 8 | lg[3], NULL};
+		s.px = malloc(s.w * s.h * 4);
+		for (int i = 0; s.px && i < s.w * s.h; i++) {
+			const unsigned char *p = lg + 4 + i * 4;
+			s.px[i] = (uint32_t)p[3] << 24 | RGB(p[0], p[1], p[2]);
+		}
+		if (s.px) blit(&s, PANX - 16 - s.w, SH - 12 - s.h, 255);
+		free(s.px);
+	}
 	memcpy(bg, fb, sizeof bg);
 }
 
@@ -661,8 +671,8 @@ void game_draw(void) {
 	if (toastT > 0) {
 		int a = (int)(255 * fminf(1, toastT * 3));
 		float w = text_w(fName, toast);
-		rrect(mid - w / 2 - 14, SH - 112, w + 28, 28, 6, 0x1C001C, a * 220 / 255);
-		text(fName, mid, SH - 107, toast, C_GOLD, a, AL_CENTER);
+		rrect(mid - w / 2 - 14, SH - 132, w + 28, 28, 6, 0x1C001C, a * 220 / 255);
+		text(fName, mid, SH - 127, toast, C_GOLD, a, AL_CENTER);
 	} else
 		text(fTiny, mid, 18, "A drag    A A copy    B remove    + settings", mix(C_WORK, C_GOLD, .45f), 255, AL_CENTER);
 

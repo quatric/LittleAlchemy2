@@ -29,6 +29,7 @@
 #include "gfx.h"
 #include "game.h"
 #include "font_ttf.h"
+#include "logo_rgba.h"
 
 static void *xfb[2];
 static int fbi;
@@ -65,6 +66,8 @@ static void present(void) {
 	VIDEO_WaitVSync();
 	fbi ^= 1;
 }
+
+const unsigned char *plat_logo(void) { return logo_rgba; }
 
 /* ---------------- saves ---------------- */
 /* saves are written to the first two; the last two are where versions named Alchemii saved */
@@ -191,12 +194,8 @@ static void stick_js(const joystick_t *js) {
 	stick(js->mag * sinf(a), -js->mag * cosf(a));
 }
 #if defined(HAVE_WIIDRC) || defined(HAVE_WUPC)
-/* sticks whose range varies by controller revision: scale by the largest value seen */
-static void stick_auto(float x, float y, float *range) {
-	if (fabsf(x) > *range) *range = fabsf(x);
-	if (fabsf(y) > *range) *range = fabsf(y);
-	stick(x / *range, -y / *range);
-}
+/* Wii U GamePad and Pro Controller sticks report roughly -900..900 */
+static void stick_wiiu(s16 x, s16 y) { stick(x / 900.f, -y / 900.f); }
 #endif
 
 #ifdef HAVE_WIIDRC
@@ -220,10 +219,16 @@ static u32 map_drc(u32 b) {
 #ifdef HAVE_SICKSAXIS
 static struct ss_device ds3;
 static int ds3OK;
+static u64 ds3Retry;
 static u32 poll_ds3(void) {
 	if (!ds3OK) return 0;
 	if (!ss_is_connected(&ds3)) {
-		if (ss_open(&ds3) > 0) ss_start_reading(&ds3);
+		/* look for a newly plugged-in controller every couple of seconds */
+		u64 now = gettime();
+		if (now >= ds3Retry) {
+			ds3Retry = now + secs_to_ticks(2);
+			if (ss_open(&ds3) > 0) ss_start_reading(&ds3);
+		}
 		return 0;
 	}
 	const struct SS_BUTTONS *b = &ds3.pad.buttons;
@@ -240,6 +245,7 @@ static u32 poll_ds3(void) {
 	if (b->left) o |= BTN_LEFT;
 	if (b->right) o |= BTN_RIGHT;
 	stick((ds3.pad.left_analog.x - 128) / 127.f, (ds3.pad.left_analog.y - 128) / 127.f);
+	stick((ds3.pad.right_analog.x - 128) / 127.f, (ds3.pad.right_analog.y - 128) / 127.f);
 	return o;
 }
 #endif
@@ -270,7 +276,12 @@ static void kbd_event(USBKeyboard_event ev) {
 static void *kbd_thread(void *arg) {
 	(void)arg;
 	while (kbdRun) {
-		if (!USBKeyboard_IsConnected() && USBKeyboard_Open(kbd_event)) kbdHeld = 0;
+		if (!USBKeyboard_IsConnected() && USBKeyboard_Open(kbd_event)) {
+			/* blink the keyboard's lights to show it was picked up */
+			kbdHeld = 0;
+			for (int i = 0; i < 3; i++) { USBKeyboard_SetLed(i, 1); usleep(250000); }
+			for (int i = 0; i < 3; i++) USBKeyboard_SetLed(i, 0);
+		}
 		USBKeyboard_Scan();
 		usleep(400);
 	}
@@ -292,8 +303,10 @@ static u32 poll_mouse(float *dx, float *dy, float *wheel) {
 		return 0;
 	}
 	mouse_event ev;
-	while (MOUSE_GetEvent(&ev)) {
-		*dx += ev.rx; *dy += ev.ry; *wheel -= ev.rz;
+	for (int n = 0; n < 64 && MOUSE_GetEvent(&ev) > 0; n++) {
+		*dx += ev.rx; *dy += ev.ry;
+		if (ev.rz > 0) *wheel -= 1;  /* wheel away from you: towards the start of the list */
+		if (ev.rz < 0) *wheel += 1;
 		buttons = 0;
 		if (ev.button & 1) buttons |= BTN_A;
 		if (ev.button & 2) buttons |= BTN_B;
@@ -368,7 +381,6 @@ int main(void) {
 	/* the pointer follows whichever device moved last: a Wii Remote's IR, or the
 	 * virtual cursor driven by sticks and the mouse */
 	float curX = SW / 2.f, curY = SH / 2.f, irX = curX, irY = curY;
-	float drcRange = 80, wupcRange[4] = {800, 800, 800, 800};
 	int useIR = 0, haveCursor = 0;
 	u32 prevHeld = 0;
 	u64 last = gettime();
@@ -402,7 +414,7 @@ int main(void) {
 			if (wh & WPAD_BUTTON_2) held |= BTN_2;
 			if (wh & WPAD_BUTTON_HOME) held |= BTN_HOME;
 			if (!wd) continue;
-			if (wd->exp.type == WPAD_EXP_CLASSIC) { held |= map_classic(wh); stick_js(&wd->exp.classic.ljs); }
+			if (wd->exp.type == WPAD_EXP_CLASSIC) { held |= map_classic(wh); stick_js(&wd->exp.classic.ljs); stick_js(&wd->exp.classic.rjs); }
 			if (wd->exp.type == WPAD_EXP_NUNCHUK) {
 				stick_js(&wd->exp.nunchuk.js);
 				if (wh & WPAD_NUNCHUK_BUTTON_Z) held |= BTN_A;
@@ -431,6 +443,7 @@ int main(void) {
 			if (ph & PAD_TRIGGER_Z) held |= BTN_1;
 			if (ph & PAD_BUTTON_Y) held |= BTN_2;
 			stick(PAD_StickX(ch) / 80.f, -PAD_StickY(ch) / 80.f);
+			stick(PAD_SubStickX(ch) / 70.f, -PAD_SubStickY(ch) / 70.f);
 		}
 
 #ifdef HAVE_WUPC
@@ -438,18 +451,16 @@ int main(void) {
 		for (int ch = 0; ch < 4; ch++) {
 			if (!WUPC_Data(ch)) continue;
 			held |= map_classic(WUPC_ButtonsHeld(ch));
-			stick_auto(WUPC_lStickX(ch), WUPC_lStickY(ch), &wupcRange[ch]);
+			stick_wiiu(WUPC_lStickX(ch), WUPC_lStickY(ch));
+			stick_wiiu(WUPC_rStickX(ch), WUPC_rStickY(ch));
 		}
-#else
-		(void)wupcRange;
 #endif
 #ifdef HAVE_WIIDRC
 		if (WiiDRC_Inited() && WiiDRC_Connected() && WiiDRC_ScanPads()) {
 			held |= map_drc(WiiDRC_ButtonsHeld());
-			stick_auto(WiiDRC_lStickX(), WiiDRC_lStickY(), &drcRange);
+			stick_wiiu(WiiDRC_lStickX(), WiiDRC_lStickY());
+			stick_wiiu(WiiDRC_rStickX(), WiiDRC_rStickY());
 		}
-#else
-		(void)drcRange;
 #endif
 #ifdef HAVE_SICKSAXIS
 		held |= poll_ds3();

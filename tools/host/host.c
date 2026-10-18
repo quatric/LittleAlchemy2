@@ -35,6 +35,18 @@ int plat_load(char *buf, int max) {
 	return n ? n : -1;
 }
 void plat_save(const char *buf, int len) { (void)buf; (void)len; }
+const unsigned char *plat_logo(void) {
+	static unsigned char *logo;
+	if (!logo) {
+		FILE *f = fopen("data/logo.rgba", "rb");
+		if (!f) return NULL;
+		fseek(f, 0, SEEK_END); long n = ftell(f); fseek(f, 0, SEEK_SET);
+		logo = malloc(n);
+		if (fread(logo, 1, n, f) != (size_t)n) { free(logo); logo = NULL; }
+		fclose(f);
+	}
+	return logo;
+}
 /* LA2_ICONS overrides the pack; set it to "" to see the drawn icons */
 const char *plat_icon_path(void) { const char *p = getenv("LA2_ICONS"); return p ? (*p ? p : NULL) : "apps/LittleAlchemy2/icons.bin"; }
 void plat_sfx(int id) { (void)id; }

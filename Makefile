@@ -86,5 +86,10 @@ $(OFILES_SOURCES) : $(HFILES)
 	@echo $(notdir $<)
 	$(bin2o)
 
+# data/logo.rgba: u16 width, u16 height (big-endian), then RGBA pixels
+%.rgba.o	%_rgba.h :	%.rgba
+	@echo $(notdir $<)
+	$(bin2o)
+
 -include $(DEPENDS)
 endif
