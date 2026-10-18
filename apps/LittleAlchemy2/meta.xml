@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <app version="1">
 	<name>Little Alchemy 2</name>
+	<coder>quatric</coder>
 	<version>2.4</version>
 	<release_date>20261018000000</release_date>
 	<short_description>Combine elements, discover the world</short_description>
