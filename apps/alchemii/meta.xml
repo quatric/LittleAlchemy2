@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<app version="1">
+	<name>Alchemii</name>
+	<version>2.0</version>
+	<release_date>20261017000000</release_date>
+	<short_description>Combine elements, discover the world</short_description>
+	<long_description>Start with water, fire, earth and air. Point with the Wii Remote, drag one element onto another and see what you create. All 720 elements and recipes of Little Alchemy 2 to discover.
+
+A: drag  (double-press A to copy)
+B: remove the element under the pointer
+-: clear the table   1: hint   2: hide finished elements
++: menu   HOME: exit
+GameCube controller: stick moves the pointer, Start opens the menu.
+
+Progress is saved to the SD card.</long_description>
+</app>

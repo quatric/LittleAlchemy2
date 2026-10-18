@@ -1,0 +1,724 @@
+# Alchemii element table - the element set and recipes of Little Alchemy 2.
+# Name | colour (RRGGBB) | icon shape | recipes "A + B" separated by ";" | unlock rule
+# Unlock rules: "start" (a starting element), "progress N" (unlocked after N discoveries)
+# or "K of A, B, C" (unlocked after discovering K of those).
+Water | 3A8EE6 | drop | Ice + Heat; Snow + Heat | start
+Fire | F2662B | flame | Fire + Alcohol; Fire + Coal | start
+Earth | 8B5A2B | rock |  | start
+Air | 9CCFEA | wind | Fire + Mist | start
+Steam | C9D2DC | cloud | Water + Heat; Water + Fire; Water + Lava; Water + Gas
+Lava | E8401C | drop | Fire + Earth; Earth + Heat; Earth + Liquid
+Pressure | 8A9BB0 | press | Air + Air; Atmosphere + Atmosphere; Air + Atmosphere; Geyser + Science; Ocean + Ocean
+Volcano | B5442A | volcano | Lava + Mountain; Fire + Mountain; Pressure + Mountain; Earth + Lava; Lava + Hill; Fire + Hill; Pressure + Hill; Lava + Container
+Sea | 2C6FBF | wave | Water + Lake; Lake + Big; Ocean + Small; Lake + Lake
+Ocean | 1D4E89 | wave | Water + Sea; Sea + Big; Tide + Container; Sea + Sea
+Energy | FFD23F | bolt | Fire + Atmosphere; Fire + Science; Heat + Science; Fire + Fire
+Mud | 6E4B2A | puddle | Water + Earth; Water + Soil
+Rain | 5DA9E9 | rain | Cloud + Heat; Pressure + Cloud; Water + Cloud
+Dust | C8B08A | dots | Earth + Air; Air + Soil; Air + Land
+Cloud | F2F5F8 | cloud | Atmosphere + Mist; Water + Atmosphere; Sky + Mist; Water + Sky
+Storm | 4B5563 | storm | Cloud + Electricity; Electricity + Atmosphere; Cloud + Cloud; Rain + Wind
+Geyser | CDE7F0 | geyser | Earth + Steam; Steam + Hill; Steam + Mountain; Steam + Pressure
+Island | 7CC36E | island | Volcano + Ocean; Volcano + Sea
+Earthquake | 8B5A2B | crack | Earth + Motion; Motion + Continent; Earth + Energy
+Wind | A9D3E8 | wind | Air + Motion; Atmosphere + Motion; Air + Pressure
+Eruption | E8401C | volcano | Pressure + Volcano; Lava + Pressure; Volcano + Time
+Sky | 87CEEB | sky | Air + Cloud; Sun + Atmosphere; Moon + Sun; Cloud + Atmosphere
+Tornado | 8E9AA6 | tornado | Storm + Storm; Storm + Wind; Storm + Motion; Wind + Big; Wind + Wind; Wind + Motion
+Plant | 4CAF50 | sprout | Tree + Small; Water + Seed; Soil + Seed; Land + Seed; Earth + Seed; Grass + Big; Algae + Land; Earth + Algae; Life + Soil; Rain + Soil
+Gunpowder | 4A4A55 | dots | Charcoal + Mineral; Fire + Dust; Energy + Mineral; Energy + Charcoal; Energy + Dust
+Explosion | FF7A1A | boom | Fire + Gunpowder; Gunpowder + Electricity; Gunpowder + Lightning; Pressure + Volcano; Fire + Petroleum; Explosion + Petroleum; Pressure + Petroleum; Heat + Petroleum; Lava + Petroleum; Volcano + Petroleum
+Stone | 9A9A9A | rock | Earth + Solid; Earth + Pressure; Air + Lava
+Sand | E3C27A | dots | Air + Stone; Wind + Stone; Air + Rock; Wind + Rock; Air + Pebble; Wind + Pebble; Small + Pebble
+Ash | 8A8A8A | dots | Fire + Mineral; Fire + Plant; Fire + Tree; Water + Campfire; Time + Campfire; Rain + Campfire; Fire + Grass; Campfire + Paper; Fire + Paper; Sun + Vampire; Vampire + Dawn
+Coal | 333333 | rock | Pressure + Organic Matter; Earth + Peat; Stone + Peat; Rock + Peat; Time + Peat; Pressure + Peat
+Diamond | 9BE7FF | crystal | Pressure + Coal
+Glass | A8DADC | cup | Fire + Sand; Sand + Heat; Sand + Electricity; Sand + Lightning
+Hourglass | E8C27A | hourglass | Sand + Glass; Sand + Time; Glass + Time; Sand + Container; Time + Container
+Aquarium | 3AB0E6 | fish | Water + Glass; Glass + Fish; Glass + Puddle; Glass + Pond; Fish + Container; Small + Swimming Pool
+Greenhouse | 7FD18B | house | Plant + Glass; Glass + Grass; Glass + Tree; Plant + Aquarium; Aquarium + Grass; Aquarium + Tree; Plant + Container; Glass + Garden
+Metal | B0B7C0 | ingot | Fire + Ore; Heat + Ore; Tool + Ore; Fire + Stone; Stone + Heat | progress 50
+Rust | A0522D | dots | Air + Metal; Air + Steel; Metal + Oxygen; Steel + Oxygen
+Boiler | 8A8F99 | pot | Pressure + Metal; Pressure + Tool; Steam + Metal; Steam + Tool; Pressure + Container
+Bullet | D4AC0D | bullet | Gunpowder + Metal; Gunpowder + Steel; Gunpowder + Tool; Gunpowder + Container
+Steel | 8FA3B5 | ingot | Metal + Charcoal; Coal + Metal; Metal + Mineral; Ash + Metal
+Time | D9B26F | hourglass |  | progress 100
+Tree | 2E8B57 | tree | Plant + Big; Plant + Wood; Nest + Container; Plant + Time
+Swamp | 5F6B3A | puddle | Mud + Grass; Mud + Tree; Algae + Lake; Algae + Pond; Lake + Reed; Pond + Reed; Tree + Lake; Mud + Reed
+Life | E94F64 | heart | Electricity + Primordial Soup; Time + Primordial Soup; Storm + Primordial Soup; Volcano + Primordial Soup; Ocean + Electricity; Sea + Electricity; Electricity + Lake; Ocean + Lightning; Sea + Lightning; Lake + Lightning; Primordial Soup + Lightning; Energy + Primordial Soup
+Plankton | 7FC8A9 | dots | Water + Life; Ocean + Life; Sea + Life; Water + Bacteria; Ocean + Bacteria; Sea + Bacteria
+Bird | 5B9BD5 | bird | Sky + Animal; Air + Animal; Animal + Airplane; Sky + Egg; Air + Egg; Egg + Airplane; Time + Dinosaur; Time + Pterodactyl
+Phoenix | FF7A1A | bird | Fire + Bird; Fire + Death; Fire + Life; Fire + Egg
+Human | E0AC69 | person | Time + Animal; Life + Clay; Time + Monkey; Tool + Animal; Tool + Monkey
+Egg | F6EBD9 | egg | Bird + Bird; Turtle + Turtle; Lizard + Lizard; Vulture + Vulture; Phoenix + Phoenix; Chicken + Chicken; Dragon + Dragon; Penguin + Penguin; Owl + Owl; Dinosaur + Dinosaur; Duck + Duck; Seagull + Seagull; Eagle + Eagle; Scorpion + Scorpion; Spider + Spider; Pigeon + Pigeon; Fish + Fish; Piranha + Piranha; Parrot + Parrot; Peacock + Peacock; Hummingbird + Hummingbird; Chameleon + Chameleon; Ostrich + Ostrich; Woodpecker + Woodpecker; Bee + Bee; Crow + Crow; Frog + Frog; Pterodactyl + Pterodactyl; Ant + Ant; Tyrannosaurus Rex + Tyrannosaurus Rex; Moth + Moth; Life + Container; Butterfly + Butterfly; Snake + Snake; Flying Fish + Flying Fish
+Clay | C2703D | rock | Mud + Sand; Stone + Liquid; Sand + Mineral; Liquid + Rock; Stone + Mineral; Rock + Mineral; Mud + Stone
+Golem | 8E8E8E | person | Clay + Story; Clay + Legend; Life + Statue; Story + Statue; Statue + Legend
+Pottery | C46A3A | bottle | Clay + Wheel; Clay + Tool
+Tool | 7F8C8D | tool | Metal + Human; Steel + Human; Human + Wood; Stone + Human; Human + Rock; Metal + Wood; Steel + Wood; Stone + Wood; Wood + Rock
+Steam Engine | 5A5A66 | train | Steam + Machine; Steam + Wheel; Boiler + Wheel
+Blade | B0B7C0 | knife | Stone + Metal; Stone + Steel; Metal + Rock; Steel + Rock
+Wood | A0522D | log | Tree + Tool; Tree + Axe; Tree + Chainsaw; Tree + Sword; Tree + Lumberjack; Tool + Forest; Axe + Forest; Forest + Chainsaw; Forest + Lumberjack
+Axe | B0B7C0 | tool | Blade + Wood; Tool + Wood; Stone + Wood; Tool + Lumberjack
+Forest | 1F6B3F | forest | Tree + Tree; Plant + Tree; Tree + Land; Tree + Container
+Love | FF4D6D | heart | Human + Human
+Lumberjack | C0392B | person | Human + Axe; Human + Chainsaw; Human + Wood; Tree + Human
+Train | 2C3E50 | train | Steel + Steam Engine; Metal + Steam Engine; Steam Engine + Wheel; Steam Engine + Wagon
+Steamboat | 8B5A2B | ship | Steam Engine + Boat; Steam Engine + Sailboat; Steam Engine + Pirate Ship; Ocean + Steam Engine; Sea + Steam Engine
+Campfire | F2662B | campfire | Fire + Wood
+Roe | F28C28 | dots | Egg + Fish; Water + Egg; Ocean + Egg; Sea + Egg; Egg + Lake; Egg + Flying Fish
+Omelette | FFD23F | puddle | Fire + Egg; Egg + Heat; Egg + Tool
+Caviar | 4A4A55 | dots | Roe + Salt; Roe + Cook
+Turtle | 5E8C3A | lizard | Sand + Egg; Beach + Animal; Egg + Beach
+Fish | F28C28 | fish | Water + Animal; Animal + Lake; Sea + Animal; Ocean + Animal; Water + Egg; Egg + Lake; Sea + Egg; Ocean + Egg
+Lizard | 6DBF4B | lizard | Stone + Animal; Animal + Rock; Stone + Egg; Egg + Rock; Dinosaur + Small; Swamp + Animal; Swamp + Egg; Blood + Cold; Animal + Heat
+Field | B8C94A | grass | Earth + Farmer; Farmer + Land; Earth + Tool; Tool + Land; Earth + Plow; Land + Plow; Farmer + Soil; Tool + Soil; Soil + Plow
+Farmer | 7E9F3B | person | Plant + Human; Human + Grass; Human + Pitchfork; Human + Field; Human + Barn; Human + Plow; Human + Orchard
+House | D35400 | house | Wall + Wall; Human + Wall; Tool + Wall; Fireplace + Container; Family + Container
+Livestock | 8B5A2B | animal | Field + Animal; Farmer + Animal; Animal + Domestication; Animal + Barn
+Chicken | F2F2F2 | bird | Bird + Domestication; Bird + Livestock; Bird + Farmer; Egg + Domestication; Egg + Livestock; Egg + Farmer; Bird + Barn; Egg + Barn; Bird + Farm; Egg + Farm
+Grass | 7EC850 | grass | Earth + Plant; Plant + Land
+Cow | 6B4E3D | animal | Livestock + Barn; Field + Livestock; Livestock + Grass; Farmer + Livestock
+Milk | FAFAFA | bottle | Farmer + Cow; Tool + Cow; Water + Cow; Farmer + Goat; Tool + Goat; Water + Goat; Cow + Liquid; Goat + Liquid
+Cheese | F7C948 | cheese | Tool + Milk; Time + Milk; Milk + Cook; Milk + Bacteria
+Moon | E8E4C9 | moon | Sky + Cheese; Sky + Planet; Sky + Stone; Night + Planet; Stone + Night; Earth + Night; Cheese + Night; Sky + Time; Stone + Planet
+Tobacco | A0784A | leaf | Plant + Smoke; Grass + Smoke; Fire + Plant
+Pipe | 6D4C41 | tool | Wood + Tobacco; Tool + Tobacco
+Wheel | 5D4037 | wheel | Tool + Motion; Stone + Motion; Metal + Motion; Steel + Motion; Water + Tool; Tool + Stream; Tool + River
+Bicycle | 16A085 | bike | Wheel + Wheel; Wheel + Chain; Wheel + Machine
+Wheat | E1B84B | wheat | Grass + Domestication; Farmer + Grass; Field + Grass
+Flour | F7F1E3 | sack | Wheat + Wheat; Stone + Wheat; Wheat + Windmill; Wheel + Wheat; Wheat + Rock
+Dough | F0D9B5 | egg | Water + Flour; Flour + Puddle; Rain + Flour
+Bread | D29A4E | bread | Fire + Dough; Energy + Dough
+Fruit | E8423F | fruit | Time + Flower; Water + Flower; Rain + Flower; Tree + Flower; Tree + Farmer; Farmer + Orchard
+Pie | C68A3F | cake | Dough + Fruit; Fruit + Cookie Dough; Dough + Meat; Fruit + Baker; Fruit + Bakery
+Meat | E88A8A | meat | Tool + Livestock; Tool + Chicken; Tool + Pig; Tool + Cow; Tool + Animal; Tool + Fish; Tool + Swordfish; Tool + Flying Fish; Tool + Shark; Tool + Frog; Axe + Livestock; Axe + Chicken; Axe + Pig; Axe + Cow; Axe + Animal; Axe + Fish; Axe + Swordfish; Axe + Flying Fish; Axe + Shark; Axe + Frog; Livestock + Sword; Chicken + Sword; Sword + Pig; Cow + Sword; Animal + Sword; Sword + Shark; Livestock + Butcher; Chicken + Butcher; Pig + Butcher; Cow + Butcher; Animal + Butcher; Fish + Butcher; Butcher + Swordfish; Butcher + Flying Fish; Butcher + Shark; Butcher + Frog; Fish + Net; Swordfish + Net; Shark + Net; Piranha + Net; Flying Fish + Net
+Sandwich | E1B84B | burger | Bread + Meat; Bread + Bacon; Cheese + Bread; Bread + Vegetable; Bread + Ham
+Smoke | 7D7D85 | cloud | Earth + Gas; Water + Campfire; Time + Campfire; Storm + Campfire; Fire + Plant; Fire + Grass; Fire + Tree; Fire + Wood; Fire + Air
+Ham | E88A8A | meat | Meat + Smoke; Smoke + Pig
+Gun | 4A4A55 | gun | Metal + Bullet; Bullet + Steel; Metal + Bow; Steel + Bow; Bullet + Bow; Gunpowder + Bow; Bullet + Container
+Corpse | E6E0D0 | skull | Bullet + Human; Human + Blade; Human + Death; Human + Grim Reaper; Time + Human; Explosion + Human; Human + Arrow
+Zombie | 7CB342 | person | Life + Corpse; Corpse + Story; Corpse + Bacteria; Human + Zombie
+Coffin | 6D4C41 | grave | Wood + Corpse; Corpse + Container; Vampire + Container
+Grave | 9A9A9A | grave | Earth + Coffin; Field + Coffin; Earth + Corpse; Field + Corpse; Forest + Corpse; Forest + Coffin; Grave + Gravestone; Coffin + Gravestone; Coffin + Container
+Graveyard | 7A7A7A | grave | Grave + Grave; Field + Grave; Grave + Land; Gravestone + Gravestone; Field + Gravestone; Gravestone + Land; Gravestone + Container
+Boat | 8D6E63 | boat | Water + Wood; Ocean + Wood; Sea + Wood; Wood + Lake; Wood + River
+Desert | E8C27A | hill | Sand + Sand; Sand + Land; Sand + Cactus; Sand + Lizard; Sand + Vulture
+Cactus | 5C9E4A | cactus | Plant + Sand; Sand + Tree; Plant + Desert; Tree + Desert
+Seaweed | 2E8B57 | grass | Ocean + Plant; Sea + Plant; Plant + Lake; Ocean + Grass; Sea + Grass
+Dragon | C0392B | dragon | Fire + Lizard; Air + Lizard; Sky + Lizard; Lizard + Airplane; Lizard + Legend; Lizard + Story
+Cyclist | E8423F | bike | Human + Bicycle; Human + Wheel
+Firefighter | E8423F | person | Fire + Human; Human + Firetruck; Human + Fire Extinguisher
+Beach | F0D9A0 | island | Ocean + Sand; Sea + Sand; Sand + Lake; Water + Sand; Sand + Wave
+Sun | FFC300 | sun | Sky + Light; Fire + Sky; Day + Space; Sky + Day; Fire + Planet; Light + Planet; Light + Day
+Palm | 4CAF50 | tree | Tree + Beach; Island + Tree; Sand + Tree
+Rainbow | FF6F91 | rainbow | Rain + Sun; Rain + Light; Water + Light; Cloud + Light; Water + Sun; Sun + Prism; Light + Prism
+Tsunami | 1D4E89 | wave | Ocean + Earthquake; Sea + Earthquake; Ocean + Explosion; Sea + Explosion; Ocean + Meteor; Sea + Meteor
+Blood | C0392B | drop | Human + Blade; Sword + Warrior
+Sailboat | 8B5A2B | ship | Wind + Boat; Boat + Fabric; Wind + Steamboat; Steamboat + Fabric
+Electricity | FFE14D | bolt | Wind + Wind Turbine; Wind Turbine + Motion; Storm + Wind Turbine; Sandstorm + Wind Turbine; Sun + Solar Cell; Light + Solar Cell; Solar Cell + Star; Metal + Lightning; Steel + Lightning; Storm + Science
+Light Bulb | FFF59D | bulb | Glass + Electricity; Glass + Light; Light + Container
+Christmas Tree | 2E7D32 | tree | Tree + Light Bulb; Tree + Star; Tree + Candle; Tree + Light; Tree + Gift
+Clock | D4AC0D | clock | Time + Electricity; Time + Wheel; Time + Tool; Time + Machine; Sundial + Machine; Tool + Sundial; Wheel + Sundial; Electricity + Sundial; Cuckoo + Container; Watch + Big
+Frankenstein's Monster | 6BA368 | person | Corpse + Legend; Corpse + Lightning; Corpse + Electricity; Corpse + Story; Zombie + Electricity; Zombie + Lightning
+Wire | B87333 | swirl | Metal + Electricity; Steel + Electricity; Electricity + Rope; Metal + Rope; Steel + Rope
+Chainsaw | E8A33D | tool | Axe + Machine; Axe + Electricity; Lumberjack + Machine; Lumberjack + Electricity; Axe + Motion
+Electrician | F5C518 | person | Human + Electricity; Human + Wire
+Light | FFE97A | sun | Electricity + Light Bulb; Electricity + Flashlight | 5 of Flashlight, Light Bulb, Light Sword, Lighthouse, Lightning, Twilight, Day, Sky, Sun, Star, Candle, Explosion, Phoenix, Rainbow, Double Rainbow!, Galaxy
+Electric Eel | 3A8EE6 | snake | Fish + Electricity
+Sunflower | FFC107 | flower | Plant + Sun; Sun + Flower
+Oil | 2B2B2B | drop | Pressure + Sunflower; Stone + Sunflower; Wheel + Sunflower; Sunflower + Windmill
+Day | FFE08A | sun | Sky + Sun; Sun + Night; Time + Sun; Time + Dawn
+Night | 2C2F5B | moon | Sky + Moon; Time + Day; Time + Moon; Time + Twilight
+Solar Cell | 2C5AA0 | screen | Tool + Sun; Tool + Light; Sun + Machine; Sun + Electricity; Energy + Sun
+Eclipse | 3A3A46 | moon | Moon + Sun
+Wave | 3A8EE6 | wave | Ocean + Wind; Ocean + Storm; Sea + Wind; Sea + Storm; Wind + Lake; Storm + Lake; Ocean + Hurricane; Sea + Hurricane; Lake + Hurricane
+Tide | 2C6FBF | wave | Ocean + Moon; Sea + Moon; Ocean + Time; Sea + Time
+Fireplace | F2662B | campfire | Campfire + House; Campfire + Brick; Campfire + Wall; Wood + Container; Campfire + Container
+Sundial | D9C9A8 | clock | Wheel + Sun; Wheel + Day; Wheel + Light; Tool + Sun; Tool + Day; Tool + Light; Sun + Watch; Sun + Clock; Light + Watch; Clock + Light
+Double Rainbow! | E8423F | rainbow | Rainbow + Rainbow
+Scythe | 9AA0A6 | knife | Blade + Grass; Blade + Wheat; Grass + Sword; Wheat + Sword; Axe + Grass; Axe + Wheat
+Gravestone | 9A9A9A | grave | Stone + Grave; Grave + Rock; Stone + Death; Rock + Death; Stone + Graveyard; Graveyard + Rock
+Twilight | 7A4FA0 | sky | Day + Night; Time + Day
+Flute | C69C6D | note | Wind + Wood; Air + Wood
+Water Pipe | 9AA0A6 | log | Water + Pipe
+Animal | B07D4F | animal | Life + Land; Life + Forest; Life + Mountain; Life + Mountain Range; Life + Beach; Life + Desert
+Snake | 5E9C3A | snake | Animal + Rope; Wire + Animal; Electric Eel + Land
+Sickness | 8BC34A | bug | Human + Bacteria; Swamp + Human; Human + Sickness
+Cold | 9FD8F0 | snow | Rain + Human; Human + Mountain Range; Human + Mountain; Human + Snow; Wind + Human; Storm + Human; Space + Thermometer
+Snow | FFFFFF | snow | Rain + Cold; Steam + Cold; Rain + Mountain; Rain + Mountain Range
+Seasickness | 8BC34A | wave | Boat + Sickness; Steamboat + Sickness; Sailboat + Sickness; Ocean + Sickness; Sea + Sickness; Sickness + Lake
+Snowman | FFFFFF | snowman | Human + Snow; Snow + Carrot; Snowball + Carrot; Coal + Snow; Coal + Snowball; Snowball + Snowball
+Toast | C68642 | bread | Fire + Bread; Fire + Sandwich
+Ice | B8E6F5 | crystal | Water + Cold; Water + Solid; Cold + Puddle; Puddle + Solid
+Sword | C0C7D0 | sword | Blade + Wood; Metal + Blade; Steel + Blade
+Penguin | 2F3640 | bird | Bird + Antarctica; Bird + Cold; Bird + Ice; Bird + Snow; Animal + Antarctica
+Windmill | F5F5F5 | windmill | Wind + House; Wind + Wheel; Wind + Wheat; Wind + Flour; Wheel + Wall
+Acid Rain | 8BC34A | rain | Rain + Smoke; Rain + Smog; Rain + Sickness; Cloud + Smoke; Cloud + Smog; Cloud + Sickness; Rain + City
+Airplane | DDE3E6 | plane | Metal + Bird; Steel + Bird; Bird + Machine; Bird + Steam Engine; Bird + Train; Bird + Car; Bird + Boat; Bird + Steamboat; Bird + Sailboat; Metal + Owl; Steel + Owl; Steam Engine + Owl; Metal + Vulture; Steel + Vulture; Metal + Duck; Steel + Duck; Metal + Seagull; Steel + Seagull; Metal + Bat; Steel + Bat; Metal + Eagle; Steel + Eagle; Steel + Pigeon; Metal + Pigeon; Metal + Hummingbird; Steel + Hummingbird; Metal + Crow; Steel + Crow; Owl + Machine; Vulture + Machine; Duck + Machine; Seagull + Machine; Bat + Machine; Eagle + Machine; Pigeon + Machine; Hummingbird + Machine; Crow + Machine; Pilot + Container
+Algae | 3E8E5E | leaf | Water + Plant; Grass + Pond; Grass + Lake; Water + Grass
+Allergy | E57373 | dots | Dust + Human; Human + Pollen
+Alligator | 4E7D3A | lizard | Lizard + River; Swamp + Lizard; Lizard + Lake
+Warrior | 8B5A2B | person | Human + Sword; Human + Bow
+Angel | F5F5F5 | person | Bird + Human; Human + Light
+Antarctica | DFF2FB | iceberg | Desert + Snow; Desert + Ice; Snow + Continent; Ice + Continent
+Archipelago | 6FA84A | island | Island + Island; Sea + Island; Ocean + Island
+Armor | 9AA5B1 | shield | Metal + Fabric; Steel + Fabric
+Astronaut | F0F3F4 | person | Human + Space; Human + Spaceship; Human + Space Station; Human + Rocket; Human + Moon; Human + Mars; Human + Solar System; Human + Mercury; Human + Jupiter; Human + Saturn; Human + Venus; Human + Moon Rover
+Atmosphere | 9CCFEA | sky | Air + Planet; Air + Sky
+Atomic Bomb | 4A5A3A | bomb | Energy + Explosion; Explosion + Big; Explosion + Explosion
+Pig | F4A6B8 | animal | Mud + Livestock; Mud + Animal; Mud + Cow
+Bacteria | 9CCC65 | dots | Life + Primordial Soup; Life + Small; Mud + Life
+Barn | C0392B | house | House + Cow; House + Livestock; House + Hay; House + Farm; Field + House; Livestock + Container; Cow + Container; Horse + Container; Pig + Container; Hay + Container; House + Sheep; Sheep + Container; Hay Bale + Container; House + Goat; Goat + Container
+Bayonet | 9AA0A6 | knife | Blade + Gun; Gun + Sword; Axe + Gun
+Beaver | 8B5A2B | animal | Wood + Animal; Animal + Dam; Animal + River; Animal + Stream
+Birdhouse | D9A066 | house | Bird + House; Bird + Wall; Egg + Container
+Blizzard | C9E6F5 | snow | Storm + Snow; Snow + Hurricane; Tornado + Snow; Wind + Snow; Snow + Snow; Snow + Big
+Brick | B5523B | brick | Fire + Mud; Mud + Sun; Fire + Clay; Clay + Sun; Stone + Clay
+Owl | 8B6B4A | bird | Bird + Night; Bird + Wizard; Bird + Twilight; Bird + Moon
+Butcher | C0392B | person | Human + Meat; Human + Ham
+Car | E74C3C | car | Metal + Wheel; Steel + Wheel; Bicycle + Bicycle; Wheel + Bicycle; Motorcycle + Motorcycle; Wheel + Motorcycle; Motorcycle + Machine; Wagon + Combustion Engine; Cart + Combustion Engine
+Charcoal | 3A3A46 | rock | Fire + Wood; Fire + Tree; Fire + Corpse; Fire + Organic Matter
+Star | FFE66B | star | Sky + Night; Night + Telescope; Space + Telescope; Sky + Space; Night + Space; Sun + Space
+Knight | 7F8FA6 | person | Human + Armor; Warrior + Armor; Warrior + Hero; Warrior + Horse
+Cuckoo | 8B6B4A | bird | Bird + Clock; Clock + Owl; Clock + Hummingbird; Bird + Alarm Clock; Owl + Alarm Clock; Alarm Clock + Hummingbird
+Dinosaur | 7FA34B | dragon | Time + Lizard; Lizard + Big
+Dog | C68642 | animal | Wolf + Domestication; Farmer + Wolf; Wolf + Farm; Barn + Wolf; Field + Wolf; Wolf + Bone; Campfire + Wolf
+Duck | F5C518 | bird | Water + Bird; Bird + Pond; Bird + Lake; Time + Duckling; Duckling + Big; Water + Owl; Owl + Pond; Owl + Lake; Water + Pigeon; Pond + Pigeon; Pigeon + Lake; Water + Chicken; Chicken + Pond; Chicken + Lake
+Dune | E1C16E | hill | Wind + Desert; Wind + Sand; Wind + Beach; Sand + Desert; Desert + Sandstorm
+Engineer | F5C518 | person | Human + Machine; Human + Steam Engine
+Glasses | 3A3A46 | glasses | Glass + Metal; Glass + Steel; Glass + Glass; Glass + Human; Human + Lens; Lens + Lens
+Family | 3A8EE6 | person | Human + Human; Human + House; Love + Container
+Fruit Tree | 5DAF3A | tree | Tree + Fruit; Wood + Fruit; Plant + Fruit
+Orchard | 4CAF50 | forest | Fruit Tree + Fruit Tree; Field + Fruit Tree; Tree + Fruit Tree; Farmer + Fruit Tree; Fruit Tree + Farm; Forest + Fruit Tree; Fruit Tree + Container
+Fireworks | B04FE0 | boom | Sky + Explosion; Explosion + Atmosphere
+Flood | 2C6FBF | wave | Rain + Rain; Rain + River; Rain + Lake; Rain + Big; Rain + Time; House + River; River + City; Tsunami + City; House + Tsunami
+Fog | B0BEC5 | cloud | Earth + Cloud; Cloud + Hill; Cloud + Mountain; Cloud + City; Cloud + Field; Cloud + Forest
+Garden | E91E63 | flower | Plant + Grass; Plant + House; Flower + Flower; Grass + Flower; Plant + Flower; House + Flower; Flower + Lawn; Plant + Lawn; Flower + Container
+Grenade | 4A5A3A | bomb | Explosion + Metal; Explosion + Steel; Explosion + Warrior
+Hail | DDEEFF | dots | Cloud + Ice; Rain + Ice; Storm + Ice; Wind + Ice; Steam + Ice; Sky + Ice
+Hay | E1C16E | grass | Grass + Scythe; Farmer + Grass; Grass + Sun; Grass + Grass; Grass + Barn; Grass + Farm; Grass + Pitchfork; Barn + Pitchfork; Pitchfork + Farm; Farmer + Pitchfork
+Hero | E67E22 | person | Human + Legend; Dragon + Knight; Human + Story; Human + Lightning
+Horizon | F2A65A | sky | Earth + Sky; Sky + Continent; Sky + Land; Ocean + Sky; Sea + Sky; Sky + Lake
+Horse | 8B5A2B | animal | Field + Animal; Livestock + Hay; Animal + Land; Livestock + Barn; Livestock + Horseshoe; Animal + Horseshoe; Animal + Saddle; Livestock + Saddle
+Hospital | F5F5F5 | building | House + Sickness; House + Ambulance; House + Doctor; Sickness + Wall; Wall + Ambulance; Doctor + Wall; Doctor + Container
+Ice Cream | FFD1DC | icecream | Milk + Cold; Milk + Ice; Milk + Snow
+Mountain | 7F8C8D | mountain | Big + Hill; Earth + Earthquake; Earth + Hill; Hill + Hill; Earthquake + Hill; Earth + Big
+Glacier | A7D8EE | mountain | Ice + Mountain; Snow + Mountain; Ice + Mountain Range; Snow + Mountain Range; Time + Ice
+Alcohol | 8E44AD | bottle | Time + Juice; Wheat + Fruit; Wheat + Juice; Fruit + Sun
+Hacker | 3A3A46 | person | Human + Computer; Human + Computer Mouse; Human + Glasses; Human + Internet
+Cart | 8B5A2B | cart | Wood + Wheel
+Wagon | 8B5A2B | cart | Horse + Cart; Cart + Fabric; House + Cart; Cart + Wall; Cow + Cart
+Doctor | F5F5F5 | person | Human + Hospital; Human + Stethoscope
+Paper | FBFBF8 | page | Pressure + Wood; Water + Wood; Wood + Machine; Wood + Blender
+Newspaper | F5F5F5 | page | Paper + Paper; Paper + Story; Letter + Letter
+Salt | F5F5F5 | dots | Ocean + Sun; Sea + Sun; Fire + Ocean; Fire + Sea; Ocean + Mineral; Sea + Mineral
+Vampire | 3A3A46 | person | Human + Blood; Human + Vampire; Human + Bat
+Sunglasses | 1A1A1A | glasses | Sun + Glasses; Beach + Glasses; Day + Glasses; Sky + Glasses; Light + Glasses
+Igloo | F2F8FC | hill | House + Ice; House + Snow; House + Cold; House + Snowman
+Sandstorm | E1C16E | tornado | Storm + Sand; Tornado + Sand; Sand + Motion; Storm + Desert; Tornado + Desert; Wind + Desert; Desert + Motion
+Oasis | 4FBF9F | island | Water + Desert; Desert + Puddle; Desert + Pond; Desert + Lake; Desert + River; Desert + Stream; Tree + Desert; Desert + Palm
+Robot | 95A5A6 | robot | Life + Armor; Metal + Life; Steel + Life; Metal + Golem; Steel + Golem; Golem + Armor
+Sushi | F2F2F2 | log | Fish + Seaweed; Caviar + Seaweed
+Treehouse | 8B5A2B | house | Tree + House; Tree + Wood
+Unicorn | F4C2E8 | animal | Horse + Legend; Rainbow + Horse; Double Rainbow! + Horse; Horse + Story; Horse + Magic
+Bacon | D35454 | meat | Fire + Pig; Campfire + Pig; Fire + Ham; Campfire + Ham
+Cigarette | F2F2F2 | log | Tobacco + Paper
+Pilot | 2C5AA0 | person | Human + Airplane; Human + Seaplane
+Seahorse | F5A623 | fish | Ocean + Horse; Sea + Horse; Water + Horse; Fish + Horse; Horse + Lake
+Fossil | D8CBB0 | bone | Earth + Dinosaur; Stone + Dinosaur; Dinosaur + Rock; Time + Dinosaur; Time + Bone; Earth + Bone; Stone + Bone; Stone + Corpse; Time + Grave; Bone + Rock; Corpse + Rock; Earth + Skeleton; Stone + Skeleton; Skeleton + Rock; Time + Skeleton
+Ring | F5C518 | ring | Diamond + Metal; Diamond + Gold; Diamond + Steel; Love + Gold; Diamond + Love; Metal + Love; Steel + Love
+Pegasus | F5F5F5 | animal | Bird + Horse; Sky + Horse; Bird + Unicorn; Sky + Unicorn
+Shark | 7A8A99 | whale | Ocean + Blood; Sea + Blood; Ocean + Wolf; Sea + Wolf; Fish + Blood; Fish + Wolf
+Space | 1B1F3B | space | Sky + Star; Sun + Star; Moon + Star; Night + Solar System; Sky + Solar System
+Yogurt | F5F5F5 | cup | Milk + Bacteria; Bacteria + Ice Cream
+Computer | 34495E | screen | Tool + Hacker; Electricity + Hacker; Wire + Hacker; Hacker + Machine; Email + Container
+Mouse | 9E9E9E | animal | Cheese + Animal; Cheese + Barn; House + Cheese; Cheese + Farm; Cheese + Wall
+Baker | F5F5F5 | person | Human + Bakery; Human + Bread; Human + Banana Bread; Human + Pizza; Human + Toast; Human + Batter; Human + Pie; Human + Donut; Human + Cookie; Human + Cookie Dough; Human + Dough
+Pencil | F5C518 | pencil | Wood + Charcoal; Coal + Wood
+Starfish | F28C5A | star | Fish + Star; Sea + Star; Ocean + Star
+Wine | 8E244D | bottle | Fruit + Alcohol; Alcohol + Juice
+Telescope | 5D6D7E | telescope | Sky + Glass; Glass + Star; Glass + Space; Glass + Moon; Glass + Planet; Glass + Mercury; Glass + Mars; Glass + Jupiter; Glass + Saturn; Glass + Galaxy; Glass + Galaxy Cluster; Glass + Universe; Glass + Supernova; Glass + Venus
+Pizza | F3B23C | cheese | Cheese + Dough; Cheese + Bread; Cheese + Wheel
+Cat | 8E8E8E | animal | Milk + Animal; Animal + Coconut Milk; Night + Animal
+Sound | 7E57C2 | note | Air + Wave; Human + Wave; Wave + Wolf; Wave + Animal
+Light Sword | 4FC3F7 | sword | Light + Sword; Energy + Sword; Electricity + Sword; Sword + Space; Sword + Force Knight
+Force Knight | 3A3A46 | person | Human + Light Sword; Warrior + Light Sword; Knight + Light Sword
+Wolf | 7A7A85 | animal | Moon + Animal; Animal + Dog; Forest + Dog; Blood + Dog
+Werewolf | 5D4037 | animal | Human + Wolf; Human + Werewolf
+Grim Reaper | 3A3A46 | ghost | Human + Scythe; Corpse + Scythe; Zombie + Scythe; Scythe + Death; Boat + Scythe; Scythe + River
+Sailor | 2C5AA0 | person | Human + Boat; Human + Sailboat; Human + Steamboat; Ocean + Human; Sea + Human; Human + Lake
+Camel | D9A066 | animal | Desert + Horse; Desert + Animal; Livestock + Desert; Cow + Desert; Desert + Saddle; Desert + Horseshoe; Sand + Horse; Sand + Livestock; Sand + Cow; Dune + Horse; Livestock + Dune; Cow + Dune; Animal + Dune
+Wall | A8432F | wall | Brick + Brick; Wood + Wood; Stone + Stone
+Planet | 5B8DEF | planet | Continent + Continent; Ocean + Continent; Earth + Space; Earth + Solar System; Earth + Sky
+Rocket | E5E7E9 | rocket | Airplane + Atmosphere; Metal + Atmosphere; Steel + Atmosphere; Train + Atmosphere; Atmosphere + Machine; Boat + Atmosphere; Steamboat + Atmosphere; Atmosphere + Car; Atmosphere + Pirate Ship
+Swordfish | 3A6EA5 | fish | Fish + Sword; Blade + Fish; Sword + Shark; Blade + Shark
+Drunk | C0392B | person | Human + Alcohol; Human + Wine; Human + Beer
+Music | 7E57C2 | note | Flute + Musician; Sheet Music + Musician; Drum + Musician; Musician + Pan Flute
+Smog | 7D7D6A | cloud | Smoke + Fog; Fog + City; Smoke + City; Atmosphere + City; Air + City
+Beer | F5B82E | cup | Wheat + Alcohol
+Seagull | F2F2F2 | bird | Sea + Bird; Ocean + Bird; Bird + Beach; Sea + Pigeon; Ocean + Pigeon; Beach + Pigeon; Sea + Rat; Ocean + Rat; Beach + Rat
+Juice | FF9F1C | cup | Pressure + Fruit; Earth + Fruit; Stone + Fruit; Fruit + Rock; Explosion + Fruit; Water + Fruit; Pressure + Vegetable; Stone + Vegetable; Vegetable + Rock; Explosion + Vegetable; Water + Vegetable
+Village | C0763A | village | House + House; Family + Family; House + Container; Bakery + Container; House + Bakery
+Scissors | E8423F | knife | Blade + Blade; Sword + Sword; Blade + Sword; Blade + Paper; Sword + Paper
+Story | 8E44AD | book | Human + Campfire; Human + Hero
+Letter | F5F0E6 | envelope | Paper + Pencil
+Coconut | 8B5A2B | fruit | Fruit + Palm; Palm + Nuts; Palm + Vegetable; Meat + Palm; Fruit + Beach; Beach + Vegetable
+Coconut Milk | F5F5F5 | cup | Milk + Coconut; Tool + Coconut; Coconut + Hammer; Sword + Coconut; Blade + Coconut; Axe + Coconut
+Sugar | F5F5F5 | dots | Fire + Juice; Energy + Juice; Energy + Fruit; Fire + Fruit; Fire + Alcohol; Energy + Alcohol; Fire + Beer; Energy + Beer; Fire + Wine; Energy + Wine
+Bat | 4A4A55 | bat | Sky + Mouse; Air + Mouse; Atmosphere + Mouse; Bird + Mouse; Mouse + Hummingbird
+Squirrel | C0712B | animal | Tree + Mouse; Plant + Mouse; Mouse + Nuts; Animal + Nuts
+River | 3C9BE0 | river | Lake + Motion; Big + Stream; Water + Mountain; Rain + Mountain; Rain + Hill
+Cookie | C68642 | cookie | Cookie Dough + Heat; Fire + Cookie Dough; Baker + Cookie Dough; Cookie Dough + Cookie Cutter; Dough + Cookie Cutter
+Iceberg | CDEFFB | iceberg | Sea + Ice; Ocean + Ice; Sea + Antarctica; Ocean + Antarctica; Sea + Arctic; Ocean + Arctic
+Vulture | 5D4037 | bird | Bird + Corpse; Corpse + Eagle; Corpse + Hummingbird; Corpse + Owl; Corpse + Pigeon; Corpse + Penguin; Chicken + Corpse; Corpse + Duck; Bird + Desert; Desert + Eagle; Desert + Hummingbird; Desert + Owl; Desert + Pigeon; Desert + Penguin; Desert + Duck
+Bone | F2EAD8 | bone | Time + Corpse; Corpse + Vulture; Corpse + Wolf; Meat + Wolf; Meat + Vulture
+Castle | 9B8F80 | castle | Stone + Knight; Knight + Wall; House + Knight; Stone + Warrior; Warrior + Wall; House + Warrior; Knight + Container; House + Vampire; Vampire + Wall; Monarch + Container; House + Monarch; Wall + Monarch
+Centaur | 8B5A2B | animal | Human + Horse; Horse + Story
+Nest | 8B5A2B | bowl | Tree + Bird; Bird + Hay; Egg + Hay; Tree + Egg; Bird + Grass; Egg + Grass; Bird + House; Egg + Container
+Lion | E1A23B | animal | Animal + Cat; Blood + Cat; Cat + Big; Cat + Monarch
+Doghouse | C0392B | house | House + Dog; Dog + Wall; Dog + Container; House + Husky; Wall + Husky; Husky + Container
+Skyscraper | 7F8FA6 | tower | Sky + House; Sky + Village; House + Big; Cloud + House
+Dynamite | E8423F | log | Gunpowder + Wire; Gunpowder + Pipe; Gunpowder + Container
+Goat | BDBDBD | animal | Livestock + Mountain; Livestock + Hill; Livestock + Mountain Range; Cow + Mountain; Cow + Hill; Cow + Mountain Range
+Cereal | F5C04A | bowl | Milk + Wheat; Wheat + Chocolate Milk; Wheat + Coconut Milk
+Black Hole | 3A3A46 | swirl | Pressure + Star; Pressure + Sun; Star + Darkness; Sun + Darkness
+Lighthouse | E74C3C | tower | Ocean + Light; Sea + Light; House + Light; Beach + Light; Ocean + Spotlight; Sea + Spotlight; House + Spotlight; Beach + Spotlight
+Surfer | 3A8EE6 | person | Human + Wave; Human + Beach
+Monkey | 8B5A2B | animal | Tree + Animal
+Idea | FFE14D | bulb | Human + Light Bulb; Light Bulb + Engineer; Light Bulb + Science; Science + Science; Engineer + Engineer; Hacker + Hacker; Lumberjack + Lumberjack; Farmer + Farmer; Firefighter + Firefighter; Electrician + Electrician; Astronaut + Astronaut; Warrior + Warrior; Butcher + Butcher; Doctor + Doctor; Pilot + Pilot; Baker + Baker; Sailor + Sailor; Surfer + Surfer; Swimmer + Swimmer; Cyclist + Cyclist; Knight + Knight; Monarch + Monarch; Angler + Angler; Mailman + Mailman; Gardener + Gardener; Philosophy + Philosophy; Science + Philosophy; Skier + Skier; Diver + Diver; Librarian + Librarian; Alchemist + Alchemist
+Galaxy | 7B4FBF | swirl | Solar System + Solar System; Star + Star; Star + Solar System; Space + Space; Space + Solar System; Star + Space; Solar System + Container; Supernova + Container; Star + Container
+Lamp | F5C518 | bulb | Metal + Light Bulb; Steel + Light Bulb
+Mirror | B3E5FC | orb | Glass + Metal; Glass + Steel; Glass + Wood
+Meteoroid | 7A6A5A | rock | Stone + Space; Space + Rock; Space + Boulder; Stone + Solar System; Solar System + Rock; Solar System + Boulder; Sun + Rock; Stone + Sun; Sun + Boulder
+Meteor | 8C6A4F | comet | Atmosphere + Meteoroid; Sky + Meteoroid; Air + Meteoroid; Night + Meteoroid; Day + Meteoroid
+Platypus | 8D6E63 | animal | Beaver + Duck; Bird + Beaver; Beaver + Seagull
+Pirate | 3A3A46 | person | Sword + Sailor; Sailor + Pirate Ship; Gun + Sailor; Bayonet + Sailor
+Lava Lamp | E8401C | bottle | Lava + Lamp; Fire + Lamp; Volcano + Lamp
+Hamburger | E1B84B | burger | Bread + Meat; Cheese + Meat
+Email | 3A8EE6 | envelope | Computer + Letter; Letter + Internet; Letter + Computer Mouse; Electricity + Letter
+Prism | B3E5FC | crystal | Glass + Rainbow; Glass + Double Rainbow!; Rainbow + Crystal Ball; Double Rainbow! + Crystal Ball
+Sandpaper | E1C16E | page | Sand + Paper; Sand + Fabric
+Kite | E8423F | kite | Wind + Paper; Sky + Paper; Air + Paper
+Origami | F2F2F2 | crystal | Bird + Paper; Animal + Paper; Paper + Eagle; Paper + Seagull; Owl + Paper; Paper + Pigeon; Cow + Paper; Horse + Paper; Dog + Paper; Paper + Cat; Paper + Lion; Paper + Hummingbird; Chicken + Paper; Penguin + Paper; Duck + Paper; Paper + Vulture
+Statue | B0B7C0 | person | Stone + Hammer; Hammer + Boulder; Human + Medusa; Hacker + Medusa; Engineer + Medusa; Lumberjack + Medusa; Pilot + Medusa; Sailor + Medusa; Firefighter + Medusa; Farmer + Medusa; Surfer + Medusa; Astronaut + Medusa; Butcher + Medusa; Doctor + Medusa; Baker + Medusa; Drunk + Medusa; Mirror + Medusa
+Chocolate | 6D4C41 | brick | Milk + Sugar; Oil + Sugar; Sugar + Seed; Coconut Milk + Sugar
+Chocolate Milk | 8D6E63 | cup | Milk + Chocolate; Coconut Milk + Chocolate
+Cookie Dough | D2A86E | egg | Dough + Sugar; Dough + Chocolate; Dough + Cookie
+City | 5D6D7E | city | Village + Village; Skyscraper + Skyscraper; Village + Skyscraper; Skyscraper + Container; Bank + Container; Skyscraper + Bank; Bank + Post Office; Skyscraper + Post Office; Village + Big
+Eagle | 6D4C41 | bird | Bird + Mountain; Bird + Mountain Range
+Watch | 5D4037 | clock | Human + Clock; Clock + Small
+Ambulance | F5F5F5 | car | Car + Hospital; Car + Doctor
+Manatee | 9AA0A6 | whale | Sea + Cow; Ocean + Cow; Fish + Cow; Cow + Lake; Cow + River
+Ski Goggles | F5A623 | glasses | Snow + Glasses; Snow + Sunglasses; Cold + Glasses; Cold + Sunglasses; Glasses + Glacier; Glacier + Sunglasses; Glasses + Skier; Sunglasses + Skier
+Swim Goggles | 3A8EE6 | glasses | Water + Glasses; Water + Sunglasses; Glasses + Lake; Sunglasses + Lake; Sea + Glasses; Sea + Sunglasses; Ocean + Glasses; Ocean + Sunglasses; Glasses + River; Sunglasses + River
+Cyborg | 9AA0A6 | robot | Human + Robot; Engineer + Robot; Lumberjack + Robot; Robot + Sailor; Robot + Baker; Robot + Cook; Doctor + Robot; Farmer + Robot; Firefighter + Robot; Robot + Pilot; Astronaut + Robot; Electrician + Robot
+Mermaid | 48C9B0 | fish | Human + Fish; Fish + Legend; Fish + Magic; Swimmer + Magic; Fish + Swimmer
+Sheep | EEEEEE | sheep | Livestock + Wool; Livestock + Hill; Livestock + Land; Cloud + Livestock; Goat + Domestication; Mountain Goat + Domestication
+Alien | 7FDB6A | alien | Life + Space; Life + Galaxy; Life + Galaxy Cluster; Life + Solar System; Life + Mars; Life + Venus; Life + Mercury; Life + Jupiter; Life + Saturn
+Book | 8E44AD | book | Paper + Legend; Wood + Paper; Newspaper + Newspaper; Story + Container; Fairy Tale + Container; Legend + Container; Idea + Container
+Dam | 9A9A9A | wall | Beaver + River; Wall + River; Tree + Beaver; Beaver + Stream; Wall + Stream; House + Beaver; Beaver + Lake; Water + Beaver; Water + Wall
+Internet | 3498DB | planet | Computer + Computer; Wire + Computer; Computer + Web; Computer + Net
+Motorcycle | 3A3A46 | bike | Bicycle + Machine; Steel + Bicycle; Metal + Bicycle; Steam Engine + Bicycle; Bicycle + Combustion Engine
+Avalanche | F2F8FC | mountain | Earthquake + Snow; Wave + Glacier; Earthquake + Glacier; Earthquake + Mountain; Wave + Mountain; Earthquake + Mountain Range; Wave + Mountain Range; Glacier + Sound; Mountain + Sound; Gun + Glacier; Gun + Mountain; Gun + Mountain Range
+Leather | 8B5A2B | cloth | Blade + Cow; Blade + Pig; Blade + Sheep; Cow + Sword; Sword + Pig; Sword + Sheep; Tool + Cow; Tool + Sheep; Tool + Pig
+Wizard | 5B2C83 | person | Human + Magic; Human + Rainbow; Human + Double Rainbow!; Human + Unicorn
+Faun | 8B5A2B | person | Human + Goat; Human + Mountain Goat; Goat + Legend; Mountain Goat + Legend; Goat + Wizard; Wizard + Mountain Goat; Goat + Magic; Mountain Goat + Magic
+Gold | F5C518 | ingot | Metal + Sun; Steel + Sun; Metal + Rainbow; Steel + Rainbow; Metal + Butter; Steel + Butter; Sand + Metal; Sand + Steel; Metal + Light; Steel + Light; Metal + Alchemist; Steel + Alchemist
+Moss | 6B8E23 | dots | Plant + Stone; Stone + Grass; Stone + Algae; Plant + Rock; Grass + Rock; Algae + Rock; Plant + Boulder; Grass + Boulder; Algae + Boulder
+Egg Timer | E8C27A | hourglass | Egg + Clock; Egg + Alarm Clock; Egg + Watch
+Butter | F5D76E | brick | Pressure + Milk; Energy + Milk; Milk + Motion; Tool + Milk
+Oxygen | 9CCFEA | orb | Plant + Sun; Tree + Sun; Grass + Sun; Sun + Algae; Plant + Carbon Dioxide; Tree + Carbon Dioxide; Grass + Carbon Dioxide; Algae + Carbon Dioxide
+Pyramid | E1C16E | pyramid | Stone + Desert; Grave + Desert; Graveyard + Desert; Desert + Mountain; Desert + Hill; Desert + Gravestone; Mummy + Container
+Sand Castle | E1C16E | castle | Sand + Castle; Beach + Castle; Desert + Castle; Dune + Castle
+Umbrella | E8423F | umbrella | Rain + Tool; Rain + Fabric; Storm + Fabric; Storm + Tool
+Pond | 3A8EE6 | puddle | Water + Puddle; Puddle + Big; Lake + Small; Puddle + Puddle
+Wool | F5F0E6 | yarn | Tool + Sheep; Scissors + Sheep; Blade + Sheep
+Scarecrow | E1B84B | person | Human + Hay; Hay + Statue; Golem + Hay; Statue + Farm; Barn + Statue; Pumpkin + Sack; Jack-o-lantern + Sack; Hay + Sack
+Carbon Dioxide | 7D7D85 | orb | Human + Oxygen; Plant + Night; Tree + Night; Grass + Night; Animal + Oxygen; Fish + Oxygen; Bird + Oxygen
+Monarch | 8E44AD | person | Human + Castle; Human + Excalibur
+Bridge | 7F8C8D | bridge | Wood + River; Metal + River; Steel + River; Wood + Stream; Metal + Stream; Steel + Stream
+Broom | D9A066 | wheat | Wood + Hay
+Leaf | 4CAF50 | leaf | Wind + Tree; Wind + Flower; Wind + Orchard; Wind + Forest
+Fridge | F5F5F5 | appliance | Metal + Cold; Steel + Cold; Cold + Machine; Metal + Ice; Steel + Ice; Electricity + Cold; Cold + Container; Ice + Container; Ice Cream + Container
+Printer | 9AA0A6 | appliance | Paper + Computer; Newspaper + Computer
+Scorpion | 8B5A2B | bug | Animal + Dune; Sand + Animal; Dune + Spider; Sand + Spider; Desert + Spider
+Santa | E8423F | person | Human + Christmas Tree; Human + Christmas Stocking; Christmas Tree + Legend; Christmas Stocking + Legend; Christmas Tree + Story; Story + Christmas Stocking
+Reindeer | 8B5A2B | animal | Animal + Santa; Livestock + Santa; Christmas Tree + Animal; Livestock + Christmas Tree; Animal + Christmas Stocking
+Sleigh | E8423F | cart | Snow + Cart; Snow + Wagon; Ice + Cart; Ice + Wagon; Cart + Arctic; Wagon + Arctic; Antarctica + Cart; Antarctica + Wagon
+Candy Cane | E8423F | cane | Christmas Tree + Sugar; Sugar + Christmas Stocking; Sugar + Santa; Sugar + Reindeer
+Christmas Stocking | E8423F | sack | Fireplace + Wool; Christmas Tree + Wool; Wool + Reindeer; Wool + Santa
+Chimney | C0392B | brick | House + Fireplace; Smoke + Brick; Fireplace + Brick; Smoke + Fireplace; House + Smoke; Stone + Smoke; Stone + Fireplace
+Sweater | E8423F | shirt | Tool + Wool; Human + Wool
+Gift | E8423F | box | Christmas Tree + Santa; Santa + Christmas Stocking; Santa + Chimney; Fireplace + Santa; Cookie + Santa; Milk + Santa; Santa + Wrapping Paper; Christmas Tree + Wrapping Paper; Christmas Stocking + Wrapping Paper; Fireplace + Wrapping Paper
+Snowball | F2F8FC | orb | Stone + Snow; Snow + Rock; Earth + Snow; Human + Snow
+Snowboard | 3A8EE6 | board | Wood + Snow; Snow + Surfer; Wood + Ice; Ice + Surfer; Mountain + Surfer; Surfer + Mountain Range
+Armadillo | 9A8478 | animal | Animal + Armor; Armor + Dog; Armor + Cat
+Pigeon | 9AA0A6 | bird | Bird + Letter; Bird + City; Bird + Statue; Bird + Skyscraper; Bird + Village
+Seaplane | F5F5F5 | plane | Sea + Airplane; Ocean + Airplane; Airplane + Lake; Water + Airplane
+Narwhal | 9CB8C8 | whale | Fish + Unicorn; Ocean + Unicorn; Sea + Unicorn; Water + Unicorn; Unicorn + Shark; Unicorn + Swordfish; Unicorn + Flying Fish
+Piranha | C0392B | fish | Fish + Blood; Fish + Wolf
+Titanic | 3A3A46 | ship | Steamboat + Iceberg; Boat + Iceberg; Iceberg + Legend; Steamboat + Legend
+Obsidian | 3B2F4A | crystal | Water + Lava; Lava + Cold; Lava + Glass
+Mummy | F2EAD8 | person | Corpse + Pyramid; Pyramid + Fabric; Corpse + Fabric; Human + Pyramid
+Money | F5C518 | coin | Paper + Gold; Diamond + Paper; Paper + Bank
+Flying Fish | 3AB0E6 | fish | Bird + Fish; Sky + Fish; Air + Fish
+Tank | 5A6B3A | car | Armor + Car; Gun + Car; Metal + Car; Steel + Car
+Solar System | 1A237E | space | Planet + Planet; Sun + Planet; Sun + Container; Planet + Container; Mars + Container; Mercury + Container; Venus + Container; Jupiter + Container; Saturn + Container
+Paper Airplane | F5F5F5 | plane | Airplane + Paper
+Banana | F5D23F | banana | Fruit + Monkey
+Sandstone | E1C16E | rock | Stone + Sand; Sand + Rock; Earth + Sand
+Parrot | E8423F | bird | Bird + Pirate; Bird + Pirate Ship; Pirate + Pigeon; Pigeon + Pirate Ship
+Dry Ice | DDEEFF | brick | Cold + Carbon Dioxide; Ice + Carbon Dioxide
+Flashlight | F5C518 | bulb | Tool + Light; Tool + Light Bulb; Human + Lamp; Tool + Lamp
+Dew | 9CCFEA | drop | Grass + Fog; Water + Grass; Plant + Fog; Tree + Fog; Grass + Dawn; Plant + Dawn; Tree + Dawn; Water + Dawn; Fog + Dawn
+Trojan Horse | 8B5A2B | animal | Wood + Horse; Horse + Machine; Horse + Statue
+Catnip | 7CB342 | leaf | Plant + Cat; Grass + Cat; Cat + Flower
+Scalpel | B0B7C0 | knife | Blade + Doctor; Blade + Hospital; Blade + Ambulance; Sword + Doctor; Sword + Hospital; Sword + Ambulance
+Skateboard | E8423F | board | Wheel + Snowboard; Wheel + Skier; Wheel + Ski Goggles
+Alarm Clock | E8423F | clock | Clock + Sound; Clock + Dawn; Clock + Bell; Sound + Watch; Watch + Dawn; Watch + Bell
+Water Gun | 3A8EE6 | gun | Water + Gun; Gun + Stream; Gun + Puddle
+Wind Turbine | F5F5F5 | windmill | Electricity + Windmill; Windmill + Machine; Electrician + Windmill; Wind + Electricity
+Piggy Bank | F4A6B8 | animal | Pig + Money; Pottery + Pig; Pig + Gold
+Sloth | 8D7A63 | animal | Time + Animal; Tree + Manatee
+Marshmallows | F5EEF0 | brick | Campfire + Sugar
+Seal | 7A8A99 | whale | Sea + Dog; Ocean + Dog; Dog + Arctic; Dog + Lake; Water + Dog
+Helicopter | 3A8EE6 | plane | Blade + Airplane; Windmill + Airplane; Airplane + Wind Turbine; Blade + Seaplane; Windmill + Seaplane; Seaplane + Wind Turbine
+Tea | 9C6B30 | cup | Water + Leaf; Human + Leaf; Leaf + Heat
+Picnic | E8423F | cloth | Grass + Sandwich; Sandwich + Beach; Sandwich + Fabric; Sandwich + Lawn; Sandwich + Garden
+Peacock | 1E88E5 | bird | Bird + Leaf; Bird + Double Rainbow!; Bird + Rainbow
+Rose | E8423F | flower | Plant + Love; Love + Flower; Blade + Flower; Plant + Blade
+Flower | F27BB0 | flower | Plant + Garden; Grass + Garden; Grass + Seed; Garden + Seed; Plant + Rainbow; Plant + Double Rainbow!; Grass + Rainbow; Grass + Double Rainbow!
+Hummingbird | 26A69A | bird | Bird + Flower; Owl + Flower; Pigeon + Flower; Seagull + Flower; Bird + Garden; Owl + Garden; Garden + Pigeon; Garden + Seagull; Bird + Small; Bird + Bee; Bird + Butterfly
+Chameleon | 8BC34A | lizard | Lizard + Rainbow; Lizard + Double Rainbow!; Rainbow + Snake; Double Rainbow! + Snake; Turtle + Rainbow; Turtle + Double Rainbow!
+Fox | E67E22 | animal | Chicken + Animal; Chicken + Wolf; Chicken + Dog; Wolf + Chicken Coop; Animal + Chicken Coop; Dog + Chicken Coop
+Wild Boar | 6D4C41 | animal | Animal + Pig; Forest + Pig; Pig + Hill
+Firetruck | E8423F | car | Firefighter + Car; Firefighter + Wagon; Fire + Car; Fire + Wagon; Car + Fire Extinguisher; Wagon + Fire Extinguisher
+Medusa | 7CB342 | person | Human + Snake; Snake + Legend; Snake + Story; Snake + Hero
+Flying Squirrel | C0712B | animal | Bird + Squirrel; Squirrel + Hummingbird; Squirrel + Pigeon; Seagull + Squirrel; Air + Squirrel; Airplane + Squirrel; Squirrel + Seaplane; Squirrel + Helicopter
+Fence | D9A066 | fence | Wood + Wall; Wood + Field; Field + Wall; Grass + Wall; Garden + Wall; Wood + Garden
+Electric Car | 4CAF50 | car | Electricity + Car; Electricity + Wagon; Car + Wind Turbine; Wagon + Wind Turbine; Solar Cell + Car; Solar Cell + Wagon
+Ostrich | 4A4A4A | bird | Earth + Bird; Sand + Bird; Bird + Big
+Milk Shake | F8BBD0 | cup | Milk + Ice Cream; Ice Cream + Yogurt; Water + Ice Cream
+Map | E1C16E | page | Paper + Land; Paper + Hill; Mountain + Paper; Paper + Mountain Range; Paper + Continent; Ocean + Paper; Sea + Paper; Paper + Lake; Paper + River; Paper + City; Paper + Village
+Lawn Mower | 4CAF50 | cart | Tool + Grass; Electricity + Scythe; Scythe + Helicopter; Scythe + Windmill; Field + Helicopter; Tool + Scythe; Scythe + Machine; Grass + Machine; Scythe + Motion
+Mousetrap | D9A066 | brick | Wood + Cheese; Metal + Cheese; Steel + Cheese; Blade + Mouse
+Cotton | F5F5F5 | cloud | Cloud + Plant; Plant + Fabric; Plant + Thread; Plant + Wool; Plant + Sheep
+Thread | F5F5F5 | yarn | Tool + Cotton; Cotton + Cotton; Wheel + Cotton; Cotton + Machine
+Fabric | 3A8EE6 | cloth | Thread + Machine; Tool + Thread; Wheel + Thread
+Bank | D9C9A8 | building | House + Gold; Skyscraper + Gold; House + Safe; Skyscraper + Safe; House + Money; Skyscraper + Money; City + Gold; City + Safe; City + Money; Money + Container; House + Vault
+Excalibur | B0B7C0 | sword | Stone + Sword; Sword + Legend; Sword + Story; Sword + Monarch; Sword + Lake; Sword + Fairy Tale
+Popsicle | E8423F | icecream | Ice + Juice; Cold + Juice; Wood + Juice; Snow + Juice
+Woodpecker | E8423F | bird | Bird + Wood; Tree + Bird; Bird + Forest
+Wand | 8D6E63 | wand | Wood + Wizard; Sword + Wizard; Tool + Wizard; Pencil + Wizard
+Pirate Ship | 3A3A46 | ship | Sailboat + Pirate; Boat + Pirate; Steam Engine + Pirate; Pirate + Container; House + Pirate
+Constellation | 1A237E | space | Star + Star
+Computer Mouse | 9AA0A6 | remote | Computer + Mouse; Animal + Computer
+Pasta | F5C04A | bowl | Egg + Flour
+Shuriken | 9AA0A6 | star | Blade + Star; Sword + Star; Metal + Star; Steel + Star; Blade + Ninja
+Ninja | 3A3A46 | person | Human + Shuriken
+Saddle | 8B5A2B | sack | Horse + Leather; Tool + Horse; Horse + Fabric
+Sheet Music | F5F5F5 | note | Paper + Music; Music + Book
+Donut | F48FB1 | cookie | Dough + Oil; Oil + Cookie Dough; Wheel + Dough; Wheel + Cookie Dough
+Fishing Rod | 8B5A2B | tool | Tool + Fish; Wood + Fish; Fish + Wire; Tool + Swordfish; Wood + Swordfish; Wire + Swordfish; Tool + Piranha; Wood + Piranha; Wire + Piranha; Fish + Thread; Swordfish + Thread; Piranha + Thread
+Mayonnaise | F5F0D0 | bottle | Egg + Oil
+Confetti | E040FB | dots | Paper + Scissors; Blade + Paper
+Witch | 3A3A46 | person | Wizard + Broom; Human + Broom; Broom + Legend; Story + Broom; Broom + Magic; Broom + Cauldron; Cauldron + Legend; Story + Cauldron
+Skeleton | F2EAD8 | skull | Time + Corpse; Bone + Bone; Corpse + Bone
+Spider | 3A3A46 | spider | Animal + Thread; Animal + Web; Animal + Net
+Web | 9AA0A6 | web | Thread + Spider; Cotton + Spider; Fabric + Spider; Spider + Net
+Ghost | F2F2F7 | ghost | Graveyard + Night; Grave + Night; Night + Gravestone; Night + Castle; Graveyard + Story; Graveyard + Legend; Grave + Legend; Grave + Story; Gravestone + Legend; Gravestone + Story; Night + Story; Night + Legend
+Vegetable | F57C00 | carrot | Field + Farmer; Forest + Farmer; Plant + Farmer; Plant + Field; Plant + Domestication
+Pumpkin | F57C00 | fruit | Field + Vegetable; Farmer + Vegetable; Vegetable + Jack-o-lantern; Plant + Jack-o-lantern
+Crystal Ball | 9575CD | orb | Glass + Witch; Glass + Wizard; Glass + Magic; Witch + Snow Globe; Wizard + Snow Globe; Snow Globe + Magic
+Jack-o-lantern | F57C00 | fruit | Fire + Pumpkin; Pumpkin + Candle; Light + Pumpkin; Night + Pumpkin; Ghost + Pumpkin; Skeleton + Pumpkin; Skeleton + Vegetable; Ghost + Vegetable; Night + Vegetable
+Bee | F2C230 | bug | Animal + Flower; Animal + Garden
+Butterfly | 4FC3F7 | butterfly | Animal + Flower; Animal + Garden; Rainbow + Animal; Double Rainbow! + Animal
+Beehive | E1B84B | sack | House + Bee; Tree + Bee; Forest + Bee; Wall + Bee; Wood + Bee; Bee + Container
+Honey | E89F1C | drop | Flower + Bee; Bee + Beehive; Time + Bee; Bee + Bee; Beehive + Beekeeper
+Wax | F5E6A8 | brick | Bee + Beehive; Wall + Beehive; Blade + Beehive; Sword + Beehive; Tool + Beehive; Beehive + Beekeeper
+Candle | F5E6A8 | candle | Thread + Wax; Fire + Wax; Light + Wax; Flashlight + Wax; Lamp + Wax
+Water Lily | F48FB1 | flower | Pond + Flower; Flower + Puddle; Flower + Lake; Flower + Stream
+Hippo | 9A8C99 | animal | Horse + River; Water + Horse; Cow + River; Water + Cow
+Pinocchio | D9A066 | person | Life + Wood; Golem + Story; Wood + Story
+Wrapping Paper | E8423F | cloth | Paper + Gift; Christmas Tree + Paper; Paper + Christmas Stocking; Paper + Santa
+Minotaur | 6D4C41 | animal | Human + Cow; Cow + Werewolf; Cow + Story; Cow + Legend
+Vase | C2703D | pot | Plant + Pottery; Pottery + Flower; Rose + Container; Flower + Container; Pottery + Rose; Rose + Bottle; Flower + Bottle; Plant + Bottle
+Space Station | B0B7C0 | ufo | House + Space; Space + Wall; Space + Village; House + Atmosphere; Atmosphere + Wall; Atmosphere + Village
+Soap | F8BBD0 | brick | Ash + Oil; Ash + Wax; Oil + Wax; Clay + Wax; Clay + Oil
+Fountain | 3A8EE6 | geyser | Water + Statue; Statue + Stream
+Needle | 9AA0A6 | pencil | Metal + Thread; Steel + Thread; Tool + Thread
+Drum | E8423F | pot | Wood + Leather; Wood + Fabric; Wood + Music
+Batter | F5D76E | bowl | Milk + Flour; Flour + Coconut Milk
+Snowmobile | 3A8EE6 | car | Snow + Motorcycle; Snow + Car; Glacier + Motorcycle; Car + Glacier; Ice + Motorcycle; Ice + Car
+Rat | 7A7A85 | animal | Animal + Pirate Ship; Sailboat + Animal; Mouse + Pirate Ship; Sailboat + Mouse; Mouse + City; Mouse + Skyscraper; Mouse + Village; Mouse + Big
+Sphinx | E1C16E | animal | Lion + Statue; Desert + Statue; Statue + Pyramid; Stone + Lion
+Jam | B0233B | bottle | Juice + Sugar; Fruit + Machine; Fruit + Juice; Juice + Machine; Fruit + Heat
+Cheeseburger | E1B84B | burger | Cheese + Hamburger; Cheese + Sandwich
+Crow | 3A3A46 | bird | Bird + Scarecrow; Bird + Field; Scarecrow + Pigeon; Field + Pigeon; Owl + Scarecrow; Field + Owl; Scarecrow + Hummingbird; Field + Hummingbird
+Stun Gun | F5C518 | gun | Gun + Electricity; Electricity + Bow; Energy + Gun; Energy + Bow; Gun + Wire
+Cannon | 4A4A55 | gun | Gunpowder + Pirate Ship; Gunpowder + Castle; Gun + Castle; Gun + Pirate Ship
+Blender | E8423F | appliance | Glass + Blade; Blade + Electricity; Blade + Windmill; Blade + Wind Turbine; Blade + Motion
+Bulletproof Vest | 4A5A3A | shirt | Bullet + Armor; Gun + Armor
+Pitchfork | 8B5A2B | tool | Tool + Hay; Metal + Hay; Steel + Hay
+Ufo | A3B1C6 | ufo | Rocket + Alien; Airplane + Alien; Alien + Spaceship; Alien + Space Station; Sky + Alien; Alien + Container
+Cake | F7A1C4 | cake | Dough + Candle; Donut + Candle; Bread + Sugar
+Bbq | 5A5A66 | campfire | Metal + Campfire; Steel + Campfire; Campfire + Garden; Campfire + House; Campfire + Meat
+Swimmer | 3A8EE6 | person | Water + Human; Human + Swim Goggles; Human + Pond; Human + Swimming Pool
+Angler | 4CAF50 | person | Human + Fishing Rod; Sailor + Fishing Rod
+Farm | C0392B | house | Farmer + House; Farmer + Barn; House + Barn; Farmer + Container; House + Tractor
+Ruins | 8A8A8A | castle | Time + Castle; Time + House; Time + Village; Time + City; Time + Skyscraper; Time + Farm; Time + Hospital
+Steak | D35454 | meat | Meat + Bbq; Fire + Cow; Cow + Bbq; Fire + Meat
+Spaceship | F5F5F5 | rocket | Airplane + Space; Metal + Space; Steel + Space; Space + Pirate Ship; Boat + Space; Steamboat + Space; Car + Space; Astronaut + Container
+Kaiju | 4CAF50 | dragon | Dinosaur + City; Dinosaur + Skyscraper; Dinosaur + Legend; Dinosaur + Story
+Horseshoe | 9AA0A6 | ring | Metal + Horse; Steel + Horse
+Soda | E8423F | bottle | Water + Carbon Dioxide; Juice + Carbon Dioxide; Carbon Dioxide + Tea
+Tractor | 4CAF50 | car | Farmer + Car; Field + Car; Farmer + Wagon; Field + Wagon; Cow + Car; Cow + Wagon
+Frog | 4CAF50 | lizard | Animal + Pond; Egg + Pond; Egg + Puddle; Animal + Puddle
+Mailman | 2C5AA0 | person | Human + Letter; Human + Newspaper; Letter + Mailbox
+Bandage | F5D7B5 | brick | Blood + Fabric; Sword + Fabric; Blade + Fabric
+Log Cabin | 8B5A2B | house | Wood + House
+Bus | F5C518 | car | Car + Car; Train + Car; Car + City; Car + Big
+Alpaca | F5E6D3 | sheep | Mountain + Sheep; Sheep + Mountain Range; Sheep + Mountain Goat
+Rope | D9A066 | yarn | Thread + Thread; Wire + Thread; Tool + Wire; Tool + Sailboat; Tool + Pirate Ship; Tool + Boat
+Puddle | 3A8EE6 | puddle | Water + Water; Pond + Small
+Grilled Cheese | F5C04A | bread | Cheese + Toast
+Pterodactyl | 8D6E63 | dragon | Air + Dinosaur; Sky + Dinosaur; Airplane + Dinosaur; Bird + Dinosaur; Dinosaur + Eagle; Dinosaur + Vulture
+Snow Globe | DDEEFF | orb | Snow + Crystal Ball; Snowman + Crystal Ball; Snowball + Crystal Ball; Crystal Ball + Snowmobile; Santa + Crystal Ball; Christmas Tree + Crystal Ball; Christmas Stocking + Crystal Ball; Blizzard + Crystal Ball; Ice + Crystal Ball; Cold + Crystal Ball; Glass + Snow; Glass + Snowman; Glass + Snowball; Glass + Snowmobile; Glass + Santa; Glass + Christmas Tree; Glass + Christmas Stocking; Glass + Blizzard
+Flamethrower | E8401C | gun | Fire + Gun; Volcano + Gun; Campfire + Gun
+Waterfall | 6CB8EE | rain | Mountain + River; River + Mountain Range; River + Hill; Mountain + Lake; Mountain Range + Lake; Lake + Hill
+Ozone | 9CCFEA | orb | Oxygen + Oxygen; Electricity + Oxygen; Electricity + Atmosphere; Air + Electricity
+Ant | 3A3A46 | bug | Grass + Animal; Grass + Spider
+Paint | 9C27B0 | drop | Water + Rainbow; Water + Double Rainbow!; Water + Pencil; Pottery + Rainbow; Tool + Rainbow; Pottery + Double Rainbow!; Tool + Double Rainbow!; Rainbow + Liquid; Double Rainbow! + Liquid; Pencil + Liquid
+Treasure Map | E1C16E | page | Pirate + Map; Map + Pirate Ship; Map + Treasure; Island + Map
+Treasure | F5C518 | coin | Pirate + Treasure Map; Pirate Ship + Treasure Map; Island + Treasure Map; Sailor + Treasure Map
+Hammer | B0B7C0 | tool | Metal + Tool; Steel + Tool; Stone + Tool; Tool + Rock; Tool + Woodpecker
+Mountain Range | 7A8A99 | mountain | Mountain + Mountain; Mountain + Continent
+Family Tree | 4CAF50 | tree | Tree + Family; Tree + Village; Time + Family
+Rv | F5F5F5 | car | House + Car; House + Bus
+Mold | 7CB342 | dots | Time + Bread; Bread + Bacteria; Bacteria + Vegetable; Fruit + Bacteria; Time + Vegetable; Time + Fruit
+Bakery | F5C04A | building | House + Bread; House + Baker; House + Donut; House + Cake; Bread + City; Baker + City; City + Donut; City + Cake; Bread + Village; Baker + Village; Village + Donut; Village + Cake; Baker + Container
+Ice Cream Truck | F8BBD0 | car | Car + Ice Cream; Ice Cream + Bus; Ice Cream + Wagon
+Gardener | 4CAF50 | person | Human + Garden; Farmer + Garden
+Supernova | F5C518 | boom | Explosion + Star; Explosion + Sun; Explosion + Galaxy; Explosion + Space
+Doge | E1A23B | animal | Dog + Internet; Dog + Computer
+The One Ring | F5C518 | ring | Volcano + Ring; Ring + Magic
+Ninja Turtle | 4CAF50 | person | Turtle + Ninja; Turtle + Shuriken; Turtle + Katana
+Gingerbread Man | C68642 | person | Life + Dough; Dough + Magic; Life + Cookie; Cookie + Magic; Story + Cookie; Life + Cookie Dough; Cookie Dough + Magic; Story + Cookie Dough; Dough + Story
+Gingerbread House | C68642 | house | House + Gingerbread Man; House + Dough; House + Cookie Dough; House + Cookie; House + Donut; House + Cake
+Safety Glasses | F5C518 | glasses | Tool + Glasses; Explosion + Glasses; Engineer + Glasses; Glasses + Bulletproof Vest; Armor + Glasses
+Hay Bale | E1C16E | log | Hay + Hay; Hay + Tractor; Barn + Hay; Hay + Machine
+Harp | F5C518 | note | Angel + Music; Angel + Musician; Wire + Angel; Wire + Music
+Fortune Cookie | F5C04A | shell | Paper + Cookie; Paper + Cookie Dough; Paper + Gingerbread Man
+Chicken Wing | E0A060 | meat | Chicken + Bone; Chicken + Bbq
+Recipe | F5F5F5 | book | Flour + Paper; Meat + Paper; Paper + Baker; Paper + Bakery; Paper + Vegetable; Fruit + Paper; Flour + Newspaper; Meat + Newspaper; Newspaper + Baker; Newspaper + Bakery; Newspaper + Vegetable; Fruit + Newspaper; Paper + Cook
+French Fries | F5C518 | fries | Oil + Vegetable; Oil + Potato; Fire + Potato
+Ruler | F5C518 | board | Wood + Pencil
+Chicken Soup | F5C04A | bowl | Water + Chicken; Water + Chicken Wing; Chicken + Liquid; Chicken Wing + Liquid
+Iced Tea | C68642 | cup | Ice + Tea; Cold + Tea
+Tyrannosaurus Rex | 4E7D3A | dragon | Meat + Dinosaur; Blood + Dinosaur; Dinosaur + Monarch
+Lake | 4FA3D9 | puddle | Water + Pond; Pond + Big; Sea + Small; Pond + Pond
+Duckling | F5E04A | bird | Egg + Duck
+Toucan | 3A3A46 | bird | Bird + Rainbow; Bird + Palm; Palm + Seagull; Palm + Pigeon; Palm + Owl; Bird + Double Rainbow!
+Optical Fiber | 4FC3F7 | river | Wire + Light; Light + Rope; Light + Internet
+Stethoscope | 4A4A55 | ring | Tool + Doctor; Doctor + Drum; Doctor + Sound; Tool + Sound; Tool + Hospital
+Mac and Cheese | F5C04A | bowl | Cheese + Pasta
+Nessie | 2E8B57 | dragon | Lake + Legend; Story + Lake; Dinosaur + Legend; Dinosaur + Story
+Banana Bread | C68642 | bread | Bread + Banana; Dough + Banana
+Drone | 4A4A55 | ufo | Airplane + Robot; Robot + Helicopter; Robot + Paper Airplane; Robot + Seaplane
+Jerky | 8D4A2B | meat | Meat + Sun; Sun + Steak; Meat + Heat; Steak + Heat
+Fairy Tale | E040FB | book | Story + Monarch; Story + Castle; Knight + Story; Dragon + Story; Unicorn + Story
+Ivy | 2E7D32 | sprout | Plant + Wall; Grass + Wall
+Hamster | E1A23B | animal | Wheel + Mouse; Mouse + Domestication; Rat + Domestication; Wheel + Rat
+Mountain Goat | BDBDBD | animal | Mountain + Goat; Goat + Mountain Range
+Carrot | F57C00 | carrot | Snowman + Vegetable; Sun + Snowman; Grass + Vegetable; Garden + Vegetable
+Penicillin | 8BC34A | bottle | Doctor + Mold; Mold + Science; Idea + Mold; Hospital + Mold
+Vacuum Cleaner | 9AA0A6 | appliance | Electricity + Broom; Broom + Machine
+Yeti | DDE6EE | animal | Mountain + Story; Story + Mountain Range; Glacier + Story; Antarctica + Story; Mountain + Legend; Mountain Range + Legend; Glacier + Legend; Antarctica + Legend
+Aurora | 26A69A | sky | Electricity + Atmosphere; Electricity + Antarctica; Sky + Antarctica; Sky + Electricity; Electricity + Arctic; Sky + Arctic; Sun + Atmosphere
+Bonsai Tree | 4CAF50 | tree | Tree + Pottery; Tree + Scissors; Tree + Wire; Tree + Small
+Fire Extinguisher | E8423F | bottle | Fire + Carbon Dioxide; Pressure + Carbon Dioxide; Metal + Carbon Dioxide; Steel + Carbon Dioxide; Boiler + Carbon Dioxide
+Gnome | E8423F | person | Garden + Statue; Garden + Story; Garden + Fairy Tale; Garden + Legend
+Granite | 9A8C8A | rock | Lava + Pressure; Pressure + Stone; Pressure + Rock
+Hedge | 2E7D32 | forest | Plant + Fence; Leaf + Fence; Garden + Fence; Plant + Wall; Wall + Leaf; Garden + Wall
+Microscope | 4A4A55 | telescope | Glass + Bacteria; Bacteria + Glasses; Bacteria + Safety Glasses; Tool + Lens; Bacteria + Lens
+Mars | C1440E | planet | Rust + Planet; Desert + Planet
+Robot Vacuum | 9AA0A6 | robot | Robot + Vacuum Cleaner; Robot + Broom; Computer + Vacuum Cleaner; Computer + Broom
+Smoothie | E91E63 | cup | Fruit + Blender; Fruit + Ice; Fruit + Cold
+Steel Wool | 9AA0A6 | yarn | Steel + Wool; Metal + Wool; Wire + Wool
+Crayon | E8423F | pencil | Rainbow + Pencil; Double Rainbow! + Pencil; Rainbow + Wax; Double Rainbow! + Wax; Pencil + Paint; Wax + Paint
+Tunnel | 8A7A6A | cave | Engineer + Mountain; Engineer + Mountain Range; Engineer + Hill; Train + Mountain; Train + Mountain Range; Train + Hill; Mountain + Cave; Hill + Cave; Mountain Range + Cave
+Quicksand | E1C16E | puddle | Sand + Swamp
+Parachute | E8423F | umbrella | Pilot + Fabric; Pilot + Umbrella; Airplane + Fabric; Airplane + Umbrella; Sky + Umbrella; Atmosphere + Umbrella
+Husky | 9AA0A6 | animal | Snow + Dog; Ice + Dog; Antarctica + Dog; Dog + Arctic; Blizzard + Dog; Dog + Glacier
+Roller Coaster | E8423F | bridge | Train + Park; Car + Park; Cart + Park; Wagon + Park
+Pencil Sharpener | 3A8EE6 | appliance | Blade + Pencil; Pencil + Blender; Sword + Pencil
+Sewing Machine | F5F5F5 | appliance | Needle + Machine; Electricity + Needle; Robot + Needle; Thread + Machine; Electricity + Thread; Robot + Thread
+Don Quixote | 9AA0A6 | person | Windmill + Knight; Windmill + Story; Windmill + Legend; Windmill + Hero
+Safe | 4A4A55 | appliance | Metal + Money; Steel + Money; Metal + Gold; Steel + Gold; Gun + Container; Gold + Container
+Sprinkles | E040FB | dots | Sugar + Confetti; Rainbow + Sugar; Double Rainbow! + Sugar; Sugar + Paint
+Chain | 9AA0A6 | ring | Metal + Rope; Steel + Rope; Metal + Wire; Steel + Wire
+Smoke Signal | 7D7D85 | cloud | Campfire + Fabric; Smoke + Fabric; Smoke + Letter
+Lasso | D9A066 | yarn | Cow + Rope; Horse + Rope; Pig + Rope; Wild Boar + Rope; Sheep + Rope; Goat + Rope
+Moth | 9A8C77 | butterfly | Moon + Butterfly; Night + Butterfly; Butterfly + Candle; Light + Butterfly; Lamp + Butterfly; Flashlight + Butterfly
+Cauldron | 3A3A46 | pot | Metal + Witch; Steel + Witch; Fireplace + Witch; Campfire + Witch; Metal + Pottery; Steel + Pottery
+Tent | F2A65A | tent | Wood + Fabric; House + Fabric; Village + Fabric; Wall + Fabric
+Perfume | E040FB | bottle | Water + Flower; Steam + Flower; Alcohol + Flower; Water + Rose; Steam + Rose; Alcohol + Rose; Water + Sunflower; Steam + Sunflower; Sunflower + Alcohol
+Cashmere | F5E6D3 | cloth | Tool + Mountain Goat; Thread + Mountain Goat; Fabric + Mountain Goat; Scissors + Mountain Goat; Wool + Mountain Goat
+Liquid | 3A8EE6 | drop | Water + Idea; Water + Science; Energy + Solid
+Heat | E8423F | wind | Fire + Idea; Fire + Science; Lava + Philosophy; Air + Energy
+Solid | 9AA0A6 | brick | Earth + Idea; Earth + Science
+Gas | C9D2DC | cloud | Air + Idea; Air + Science; Energy + Liquid
+Big | 8A9BB0 | press | Universe + Philosophy; Galaxy + Philosophy; Galaxy Cluster + Philosophy; Solar System + Philosophy; Sun + Philosophy; Planet + Philosophy | progress 150
+Universe | 1A237E | space | Galaxy Cluster + Galaxy Cluster; Space + Container; Galaxy Cluster + Container
+Galaxy Cluster | 7E57C2 | swirl | Galaxy + Galaxy; Galaxy + Container
+Stream | 3A8EE6 | river | Pond + Motion; Big + Rivulet; River + Small
+Rivulet | 6FB3F0 | river | Puddle + Motion; Stream + Small
+Motion | 9CCFEA | wind | Wind + Science; Wind + Idea; Wind + Philosophy; Tornado + Science; Tornado + Philosophy; Stream + Science; Stream + Philosophy; River + Philosophy; River + Science | 5 of Stream, River, Wind, Windmill, Wind Turbine, Storm, Rain, Geyser, Eruption, Tornado, Explosion, Hourglass, Time, Bird, Rocket
+Small | 8A9BB0 | press | Bacteria + Philosophy; Oxygen + Philosophy; Carbon Dioxide + Philosophy; Ozone + Philosophy; Pebble + Philosophy; Rivulet + Philosophy; Ant + Philosophy; Spider + Philosophy; Bee + Philosophy; Confetti + Philosophy; Scorpion + Philosophy; Seahorse + Philosophy | 5 of Bacteria, Oxygen, Carbon Dioxide, Ozone, Pebble, Rivulet, Ant, Spider, Bee, Confetti, Scorpion, Seahorse
+Soil | 6E4B2A | hill | Earth + Life; Earth + Organic Matter; Life + Land; Land + Organic Matter
+Pebble | 9A9A9A | rock | Stone + Small; Earth + Small; Small + Rock
+Rock | 8A8A8A | rock | Big + Pebble; Small + Boulder; Pebble + Pebble
+Boulder | 7A7A7A | rock | Big + Rock; Small + Hill; Rock + Rock; Stone + Rock; Earth + Rock; Stone + Big
+Hill | 6FA84A | hill | Big + Boulder; Mountain + Small; Earth + Boulder; Stone + Boulder; Boulder + Boulder
+Land | 6FA84A | hill | Soil + Soil; Big + Soil; Earth + Earth; Earth + Stone; Small + Continent
+Continent | 6FA84A | island | Big + Land; Land + Land; Mountain Range + Mountain Range; Earth + Land
+Mineral | 9C27B0 | crystal | Stone + Organic Matter; Rock + Organic Matter; Earth + Organic Matter; Boulder + Organic Matter; Hill + Organic Matter; Mountain + Organic Matter
+Organic Matter | 6D8C3A | sprout | Life + Death; Life + Science; Bacteria + Death; Corpse + Science
+Gust | C9E6F5 | wind | Wind + Small; Air + Small
+Warmth | F2A65A | wind | Air + Heat; Human + Heat
+Chill | 9CCFEA | snow | Air + Cold; Human + Cold; Human + Ice
+Mist | B9CEDC | cloud | Water + Air; Air + Steam; Air + Rain
+Plasma | E040FB | orb | Star + Science; Sun + Science; Pressure + Heat; Heat + Heat
+Current | 2C6FBF | river | Ocean + Motion; Sea + Motion; Ocean + Heat; Sea + Heat; Ocean + Cold; Sea + Cold; Ocean + Science; Sea + Science
+Arctic | DFF2FB | iceberg | Ocean + Cold; Sea + Cold
+Hurricane | 5D6D7E | swirl | Ocean + Tornado; Sea + Tornado; Ocean + Storm; Sea + Storm
+Seed | 9C7A3C | seed | Plant + Pollen; Bee + Pollen; Time + Flower
+Pollen | F5C518 | dots | Dust + Plant; Wind + Plant; Dust + Flower; Wind + Flower
+Primordial Soup | 6E8B3A | puddle | Lava + Ocean; Lava + Sea; Ocean + Planet; Earth + Ocean; Sea + Planet; Earth + Sea
+Lightning | FFE94A | bolt | Cloud + Electricity; Storm + Electricity; Rain + Electricity; Energy + Storm; Energy + Cloud; Energy + Rain; Storm + Land
+Death | E6E0D0 | skull | Time + Life; Corpse + Philosophy; Skeleton + Philosophy; Grave + Philosophy; Graveyard + Philosophy
+Ore | 8A6A5A | rock | Hammer + Boulder; Earth + Hammer; Hammer + Rock; Stone + Hammer; Hammer + Hill; Mountain + Hammer
+Domestication | 8B5A2B | animal | Farmer + Animal; Human + Animal; Animal + Science; Farmer + Science
+Plow | 8B5A2B | tool | Earth + Metal; Metal + Field; Earth + Steel; Steel + Field; Earth + Wood; Wood + Field; Tool + Field
+Legend | F5C518 | book | Time + Story; Story + Big; Story + Story; Story + Fairy Tale; Time + Fairy Tale; Fairy Tale + Big
+Mercury | 9AA0A6 | planet | Planet + Small; Planet + Heat
+Jupiter | D9A066 | planet | Cloud + Planet; Storm + Planet; Planet + Big; Planet + Gas; Big + Saturn
+Saturn | E1C16E | planet | Ring + Planet; Small + Jupiter
+Machine | 9AA0A6 | gear | Tool + Wheel; Tool + Tool; Boiler + Wheel; Boiler + Tool; Boiler + Chain; Tool + Chain; Tool + Engineer
+Cook | F5F5F5 | person | Human + Fruit; Human + Campfire; Human + Vegetable; Human + Nuts
+Potter | C2703D | person | Human + Pottery; Human + Clay
+Science | 3A8EE6 | atom | Human + Telescope; Human + Microscope; Human + Universe | progress 150
+Philosophy | 7E57C2 | book | Human + Idea; Human + Story; Egg + Chicken | progress 150
+Net | 9AA0A6 | web | Angler + Rope; Fish + Rope; Swordfish + Rope; Fishing Rod + Rope; Flying Fish + Rope
+Nuts | 8B5A2B | seed | Tree + Farmer; Tree + Domestication; Tree + Field
+Bow | 8B5A2B | bow | Wood + Rope; Wood + Wire
+Arrow | 8B5A2B | arrow | Bullet + Wood; Wood + Bow
+Coral | FF7F6A | coral | Ocean + Tree; Sea + Tree; Ocean + Fossil; Sea + Fossil; Ocean + Bone; Sea + Bone
+Dawn | F2A65A | sky | Time + Night; Day + Night
+Polar Bear | F0F0F0 | animal | Animal + Ice; Animal + Arctic
+Reed | 6FA84A | grass | Plant + Pond; Plant + Puddle; Grass + Pond; Grass + Puddle; Swamp + Grass; Plant + Swamp; Plant + River; Grass + River
+Chicken Coop | D9A066 | house | House + Chicken; Chicken + Wall; Chicken + Barn; Chicken + Container
+Magic | B15CFF | sparkle | Life + Rainbow; Life + Double Rainbow!; Energy + Wizard; Energy + Witch
+Musician | 7E57C2 | person | Human + Flute; Human + Music; Human + Sheet Music; Human + Drum; Human + Pan Flute
+Darkness | 3A3A46 | orb | Sky + Night; Sky + Twilight
+Spotlight | FFF59D | bulb | Light + Machine; Metal + Light; Steel + Light
+Skier | 3A8EE6 | person | Human + Ski Goggles; Human + Mountain; Human + Mountain Range
+Venus | E1A23B | planet | Acid Rain + Planet; Planet + Smog; Volcano + Planet
+Bell | F5C518 | bell | Metal + Sound; Steel + Sound; Wood + Sound; Metal + Hammer; Steel + Hammer
+Katana | B0B7C0 | sword | Blade + Heat; Blade + Shuriken; Sword + Shuriken; Blade + Ninja; Sword + Ninja
+Potato | C2A060 | rock | Earth + Vegetable
+Park | 6FA84A | forest | Forest + City; Forest + Village; Garden + City; Garden + Village; Grass + City; Grass + Village; Field + City; Field + Village
+Magma | E8401C | drop | Lava + Science; Volcano + Science
+Container | 9AA0A6 | crate | Safe + Philosophy; Pottery + Philosophy; House + Philosophy; Philosophy + Box; Philosophy + Bottle; Philosophy + Bucket | progress 300
+Scuba Tank | F5C518 | bottle | Air + Container; Atmosphere + Container; Oxygen + Container
+Diver | 3A3A46 | person | Human + Scuba Tank; Swimmer + Scuba Tank; Ocean + Scuba Tank; Sea + Scuba Tank; Lake + Scuba Tank
+Battery | 3A3A46 | battery | Electricity + Container; Energy + Container; Electricity + Mineral; Electricity + Ore
+Lawn | 6FA84A | grass | Grass + Container; House + Grass; Field + Lawn Mower; Grass + Lawn Mower
+Combustion Engine | 4A4A55 | gear | Machine + Petroleum; Steam Engine + Petroleum; Wheel + Petroleum; Explosion + Machine; Explosion + Steam Engine
+Petroleum | 3A3A46 | drop | Pressure + Fossil; Time + Fossil; Fossil + Liquid; Water + Fossil
+Birdcage | 9AA0A6 | cage | Bird + Container; Bird + Wall; Bird + Safe; Bird + Cage
+Toolbox | E8423F | crate | Tool + Container; Tool + Safe; Hammer + Container; Hammer + Box; Tool + Box; Ruler + Container; Ruler + Box; Steel Wool + Container; Steel Wool + Box; Chain + Box; Chain + Container
+Trainyard | 5A5A66 | train | Train + Container; Train + House; Train + Wall; Train + Garage
+Bottle | 8FD0A8 | bottle | Milk + Container; Water + Container; Coconut Milk + Container; Juice + Container; Oil + Container; Alcohol + Container; Wine + Container; Beer + Container; Chocolate Milk + Container; Soda + Container; Perfume + Container; Liquid + Container
+Silo | 9AA0A6 | tower | Wheat + Container; House + Wheat; Wheat + Barn; Wheat + Wall; Wheat + Farm; Wheat + Safe; Wheat + Bank
+Sack | D9A066 | sack | Flour + Container; Salt + Container; Letter + Container
+Firestation | E8423F | building | House + Firefighter; House + Firetruck; Firefighter + Land; Firefighter + Village; Firefighter + City
+Blood Bag | C0392B | sack | Blood + Container; Blood + Sack; Blood + Bottle
+Zoo | 6FA84A | cage | Animal + Container; Animal + Cage
+Cage | 9AA0A6 | cage | Metal + Wolf; Steel + Wolf; Wolf + Wall; Metal + Fox; Steel + Fox; Wall + Fox; Metal + Lion; Steel + Lion; Wall + Lion; Hamster + Container; House + Hamster; Wall + Hamster
+Cave | 8A7A6A | cave | House + Wolf; House + Lion; House + Fox; House + Bat; Bat + Container; Wolf + Container; Lion + Container; Fox + Container
+Hangar | 9AA0A6 | building | Airplane + Container; House + Airplane; Airplane + Wall; Airplane + Barn; Seaplane + Container; House + Seaplane; Wall + Seaplane; Barn + Seaplane; Helicopter + Container; House + Helicopter; Wall + Helicopter; Barn + Helicopter; Rocket + Container; House + Rocket; Wall + Rocket; Barn + Rocket; Spaceship + Container; House + Spaceship; Wall + Spaceship; Barn + Spaceship
+Bucket | 8A8F99 | pot | Wood + Container; Yogurt + Container; River + Bottle; Paint + Container; Paint + Bottle; Chicken Wing + Container; Chicken Wing + Box
+Box | D9A066 | crate | Pizza + Container; Pencil + Container; Cookie + Container; Cereal + Container; Donut + Container; Cake + Container; Crayon + Container
+Garage | 9AA0A6 | building | House + Car; House + Ambulance; House + Motorcycle; House + Bus; Car + Container; Ambulance + Container; Motorcycle + Container; Bus + Container; Car + Wall; Wall + Ambulance; Wall + Motorcycle; Wall + Bus; Barn + Car; Barn + Ambulance; Barn + Motorcycle; Barn + Bus; House + Sleigh; Sleigh + Container; Wall + Sleigh; Barn + Sleigh; House + Electric Car; Electric Car + Container; Wall + Electric Car; Barn + Electric Car; House + Snowmobile; Snowmobile + Container; Wall + Snowmobile; Barn + Snowmobile; House + Tractor; Tractor + Container; Wall + Tractor; Barn + Tractor; House + Rv; Rv + Container; Wall + Rv; Barn + Rv; House + Ice Cream Truck; Ice Cream Truck + Container; Wall + Ice Cream Truck; Barn + Ice Cream Truck
+Library | 7D5A44 | house | Book + Container; House + Book
+Librarian | 8E44AD | person | Human + Library
+Closet | 8B5A2B | appliance | Broom + Container; Container + Toolbox; Umbrella + Container; Vacuum Cleaner + Container; Robot Vacuum + Container
+Jar | B3E5FC | bottle | Jam + Container; Jam + Bottle; Glass + Jam; Jam + Bucket
+Post Office | 3A8EE6 | building | House + Mailman; Wall + Mailman; Mailman + Container; House + Letter; Wall + Letter; Letter + Mailman; Letter + Letter
+Mailbox | 2C5AA0 | envelope | Letter + Box; Mailman + Box; Metal + Letter; Steel + Letter; Wood + Letter; Metal + Mailman; Steel + Mailman; Wood + Mailman
+Anthill | C2703D | cave | House + Ant; Ant + Container; Ant + Hill; Earth + Ant; Ant + Land; Ant + Soil
+Cup | F5F5F5 | cup | Smoothie + Container; Tea + Container; Milk Shake + Container; Smoothie + Bottle; Tea + Bottle; Milk Shake + Bottle
+Peat | 5D4037 | brick | Plant + Swamp; Pressure + Swamp; Time + Swamp; Time + Grass
+Cotton Candy | F8BBD0 | cloud | Air + Sugar; Sugar + Thread; Cloud + Sugar
+Frozen Yogurt | F5F5F5 | icecream | Cold + Yogurt; Ice + Yogurt
+Alchemist | 7E57C2 | person | Human + Gold; Gold + Philosophy
+Little Alchemy | D79F47 | book | Small + Alchemist
+Pan Flute | D9A066 | note | Flute + Flute
+Knife | B0B7C0 | knife | Blade + Cook; Sword + Cook
+Cutting Board | 8B5A2B | board | Wood + Cook
+Thermometer | E8423F | pencil | Glass + Quicksilver; Tool + Quicksilver; Engineer + Quicksilver
+Butterfly Net | 9AA0A6 | web | Butterfly + Net; Bee + Net
+Vault | 4A4A55 | appliance | Safe + Big
+Spaghetti | F5C04A | bowl | Thread + Pasta; Wire + Pasta; Pasta + Rope
+String Phone | E8423F | cup | Wire + Paper Cup; Thread + Paper Cup; Wire + Cup; Thread + Cup
+Paper Cup | F5F5F5 | cup | Paper + Cup
+Hedgehog | 8B6B4A | animal | Animal + Needle; Mouse + Needle; Needle + Rat
+Caramel | C68642 | drop | Sugar + Heat
+Maple Syrup | C68642 | bottle | Heat + Sap; Sugar + Sap
+Sap | D9A066 | drop | Tree + Blade
+Quicksilver | 9AA0A6 | drop | Metal + Liquid
+Swimming Pool | 4FC3F7 | puddle | House + Lake; House + Swimmer; Aquarium + Big
+Painting | D79F47 | frame | Canvas + Painter; Paint + Canvas
+Cookie Cutter | 9AA0A6 | star | Blade + Dough; Blade + Cookie Dough
+Windsurfer | F5F5F5 | ship | Wind + Surfer
+Cookbook | E8423F | book | Recipe + Recipe; Book + Cook
+Rabbit | F5F5F5 | animal | Animal + Carrot; Rabbit + Rabbit
+Ice Sculpture | B3E5FC | crystal | Ice + Statue
+Apron | F5F5F5 | shirt | Fabric + Cook; Baker + Fabric
+Cable Car | E8423F | car | Car + Mountain; Wire + Mountain; Car + Mountain Range; Wire + Mountain Range; Mountain + Rope; Rope + Mountain Range
+Vinegar | D9C9A8 | bottle | Wine + Oxygen; Air + Wine; Time + Wine
+Paleontologist | D9A066 | person | Human + Dinosaur; Human + Fossil; Dinosaur + Science; Fossil + Science
+Archeologist | D9A066 | person | Human + Ruins; Ruins + Science
+Vine | 4CAF50 | sprout | Rope + Rainforest; Thread + Rainforest; Wire + Rainforest
+Rainforest | 2E7D32 | forest | Rain + Forest
+Syringe | B3E5FC | pencil | Doctor + Needle; Tool + Needle
+Moon Rover | 9AA0A6 | car | Moon + Car; Moon + Electric Car
+Lens | B3E5FC | orb | Glass + Tool; Glass + Engineer
+Shovel | B0B7C0 | tool | Tool + Gardener
+Hot Chocolate | 6D4C41 | cup | Chocolate Milk + Heat; Chocolate + Heat
+Beekeeper | F5F5F5 | person | Human + Beehive; Farmer + Beehive; Human + Bee; Farmer + Bee
+Ant Farm | C2A060 | crate | Farm + Ant; Ant + Jar; Glass + Ant; Farm + Anthill; Jar + Anthill
+Canvas | F5F5F5 | frame | Fabric + Paint
+Painter | E040FB | person | Human + Paint; Human + Canvas; Human + Painting
+Peanut Butter | C68642 | bottle | Butter + Nuts; Pressure + Nuts
+Samurai | C0392B | person | Human + Katana
+Snowboarder | 3A8EE6 | person | Human + Snowboard
+Mail Truck | F5F5F5 | car | Car + Mailman; Car + Post Office; Car + Letter
+Firewall | E8401C | wall | Fire + Wall
+Binoculars | 3A3A46 | glasses | Telescope + Telescope; Glasses + Glasses
+Astronomer | 2C3E8F | person | Human + Telescope
+Excavator | F5C518 | car | Car + Shovel; Big + Shovel
+Spoon | B0B7C0 | spoon | Small + Shovel
+Fork | B0B7C0 | spoon | Pitchfork + Small
+Restaurant | E8423F | building | House + Cook
+Tailor | 8E44AD | person | Human + Sewing Machine; Human + Needle; Human + Thread
+Barrel | 8B5A2B | pot | Wine + Container; Wood + Wine
+Paraglider | F5A623 | umbrella | Kite + Big
+Circus | E8423F | tent | Tent + Big; Animal + Tent
+Laptop | 4A4A55 | screen | Computer + Small
+Tablet | 3A3A46 | phone | Small + Laptop
+Smartphone | 3A3A46 | phone | Small + Tablet
+Factory | 9AA0A6 | building | House + Chimney; Tool + House
+Aviary | 6FA84A | cage | Big + Birdcage
+Writer | 8E44AD | person | Human + Book; Human + Pencil

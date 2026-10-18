@@ -1,0 +1,8 @@
+.DS_Store
+build/
+portlibs/
+*.elf
+*.dol
+*.map
+alchemii-hbc.zip
+apps/alchemii/icons.bin
