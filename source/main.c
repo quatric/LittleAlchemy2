@@ -177,7 +177,7 @@ void plat_rumble(int ms) {
 }
 
 /* ---------------- input ---------------- */
-/* Devices come from libinput-wii; this maps them onto the game's buttons and cursor. */
+/* Devices come from libwiiinput; this maps them onto the game's buttons and cursor. */
 static u32 map_buttons(u32 b) {
 	u32 o = 0;
 	if (b & WPAD_BUTTON_A) o |= BTN_A;

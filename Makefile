@@ -10,7 +10,7 @@ include $(DEVKITPPC)/wii_rules
 
 TARGET		:=	LittleAlchemy2
 BUILD		:=	build
-SOURCES		:=	source libinput-wii/source
+SOURCES		:=	source libwiiinput/source
 DATA		:=	data
 
 CFLAGS	= -O2 -Wall -Wno-misleading-indentation $(MACHDEP) $(INCLUDE)
@@ -22,7 +22,7 @@ LIBS	:=	-lfat -lvorbisidec -logg -lwiikeyboard -lwiiuse -lbte -lasnd -logc -lm
 LIBS	:=	-lwiiupdate $(LIBS)
 TOPDIR	:=	$(patsubst %/,%,$(dir $(abspath $(firstword $(MAKEFILE_LIST)))))
 # portlibs/ppc: optional controller libraries; $(PORTLIBS): devkitPro's ppc-libvorbisidec
-LIBDIRS	:=	$(TOPDIR)/portlibs/ppc $(PORTLIBS) $(TOPDIR)/libinput-wii
+LIBDIRS	:=	$(TOPDIR)/portlibs/ppc $(PORTLIBS) $(TOPDIR)/libwiiinput
 LIBDIRS	+=	$(TOPDIR)/libwiiupdate
 
 # Wii U GamePad, Wii U Pro Controller and DualShock 3 support, on by default once
