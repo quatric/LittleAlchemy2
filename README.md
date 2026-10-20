@@ -1,6 +1,6 @@
 # Little Alchemy 2 for Wii
 
-**Version:** 2.4.2 · **Coder:** quatric
+**Version:** 2.4.3 · **Coder:** quatric
 
 An element-combining puzzle game for the Wii Homebrew Channel. It uses the same
 elements and recipes as [Little Alchemy 2](https://littlealchemy2.com/): start with
