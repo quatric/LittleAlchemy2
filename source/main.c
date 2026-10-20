@@ -253,10 +253,6 @@ static void input_init(void) {
 	INPUT_KeyboardMapSet(0x4A, WPAD_BUTTON_HOME);  /* Home */
 }
 
-static void input_shutdown(void) {
-	INPUT_Shutdown();
-}
-
 /* Update popup, in the settings window's colours */
 static void draw_update_popup(const wiiupdate_popup *p) {
 	const float w = 460, x = (SW - w) / 2, y = 150;
@@ -388,8 +384,8 @@ int main(int argc, char **argv) {
 	WIIUPDATE_Wait(4000);
 	audio_shutdown();
 	WPAD_Rumble(0, 0);
-	input_shutdown();
-	ASND_End();
+	/* the Homebrew Channel reloads everything when we return: tearing the USB, pad and sound
+	 * drivers down by hand first only gives their threads a chance to crash on the way out */
 	VIDEO_SetBlack(true);
 	VIDEO_Flush();
 	VIDEO_WaitVSync();

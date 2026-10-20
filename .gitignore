@@ -5,6 +5,4 @@ portlibs/
 *.dol
 *.map
 LittleAlchemy2-hbc.zip
-apps/LittleAlchemy2/icons.bin
-apps/LittleAlchemy2/audio/
 .dolxz/
