@@ -34,7 +34,7 @@ jobs:
         run: make package
 
       - name: Package (SD card layout)
-        run: zip -r LittleAlchemy2-hbc.zip apps -x 'apps/LittleAlchemy2/icons.bin' 'apps/LittleAlchemy2/audio/*'
+        run: zip -r LittleAlchemy2-hbc.zip apps
 
       - uses: actions/upload-artifact@v4
         with:
@@ -80,7 +80,7 @@ jobs:
           body: |
             Latest build of Little Alchemy 2 from ${{ github.sha }}.
 
-            Extract LittleAlchemy2-hbc.zip to the root of your SD card (or USB drive) and open Little Alchemy 2 from the Homebrew Channel. The icon and audio packs are Little Alchemy 2's own files, so they are not in the zip: see the README to make them.
+            Extract LittleAlchemy2-hbc.zip to the root of your SD card (or USB drive) and open Little Alchemy 2 from the Homebrew Channel. The zip includes the icon pack and the music and sound effects.
           files: |
             out/LittleAlchemy2-hbc.zip
       - name: Publish tagged release
@@ -92,6 +92,6 @@ jobs:
           generate_release_notes: true
           fail_on_unmatched_files: true
           body: |
-            Extract LittleAlchemy2-hbc.zip to the root of your SD card (or USB drive) and open Little Alchemy 2 from the Homebrew Channel. The icon and audio packs are Little Alchemy 2's own files, so they are not in the zip: see the README to make them.
+            Extract LittleAlchemy2-hbc.zip to the root of your SD card (or USB drive) and open Little Alchemy 2 from the Homebrew Channel. The zip includes the icon pack and the music and sound effects.
           files: |
             out/LittleAlchemy2-hbc.zip

@@ -1,21 +1,18 @@
 # Little Alchemy 2 for Wii
 
-**Version:** 2.4.3 · **Coder:** quatric
+**Version:** 2.4.4 · **Coder:** quatric
 
 An element-combining puzzle game for the Wii Homebrew Channel. It uses the same
 elements and recipes as [Little Alchemy 2](https://littlealchemy2.com/): start with
 water, fire, earth and air and combine your way to all 720 elements.
 
-With the icon pack (`apps/LittleAlchemy2/icons.bin`) on the SD card the game shows Little
-Alchemy 2's own icons. The pack is Little Alchemy 2 artwork, so it is not included in
-`LittleAlchemy2-hbc.zip`; make it yourself with `python3 tools/fetch_icons.py` (needs Google
-Chrome and ImageMagick) and copy it next to `boot.dol`. Without it the game draws its
-own icons.
+`LittleAlchemy2-hbc.zip` includes the icon pack (`apps/LittleAlchemy2/icons.bin`), so the game
+shows Little Alchemy 2's own icons. You can rebuild it with `python3 tools/fetch_icons.py`
+(needs Google Chrome and ImageMagick). Without it the game draws its own icons.
 
-The same goes for music and sound: with the audio pack (`apps/LittleAlchemy2/audio/`) on the
-SD card the game plays Little Alchemy 2's own music and sound effects, with the music
-picking calm or busy tracks from how fast you are discovering, like the original. Make it
-with `python3 tools/fetch_audio.py` and copy the `audio` folder next to `boot.dol`. Without
+The zip also includes the audio pack (`apps/LittleAlchemy2/audio/`), so the game plays Little Alchemy 2's own music and sound effects, with the music
+picking calm or busy tracks from how fast you are discovering, like the original. Rebuild it
+with `python3 tools/fetch_audio.py`. Without
 it the game plays simple built-in sound effects and no music. Music and sound effects can
 each be turned off in the menu (+); the choice is saved with your progress.
 
@@ -30,12 +27,11 @@ Grab the latest build from the [latest release](../../releases/latest): `LittleA
 1. Extract `LittleAlchemy2-hbc.zip` to the root of your SD card (or USB drive).
 2. Open Little Alchemy 2 from the Homebrew Channel.
 
-The icon and audio packs are Little Alchemy 2's own files, so they are not in the zip: see the README to make them.
+The zip includes the icon pack and the music and sound effects.
 
 ## Install
 Copy `apps/LittleAlchemy2/` to `sd:/apps/LittleAlchemy2/` and launch it from the Homebrew Channel
-(or unzip `LittleAlchemy2-hbc.zip` onto the root of the SD card and add `icons.bin` to
-`sd:/apps/LittleAlchemy2/` for the real icons, and the `audio` folder for music and sound). Progress is saved to
+(or unzip `LittleAlchemy2-hbc.zip` onto the root of the SD card). Progress is saved to
 `sd:/apps/LittleAlchemy2/LittleAlchemy2.sav` (saves from `sd:/apps/alchemii/` are picked up).
 
 ## Controls
