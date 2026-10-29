@@ -6,3 +6,11 @@ portlibs/
 *.map
 LittleAlchemy2-hbc.zip
 .dolxz/
+ports/*/build/
+ports/host/LittleAlchemy2-host
+ports/*/*.nro
+ports/*/*.rpx
+ports/*/*.wuhb
+ports/*/*.3dsx
+.codesight/
+LittleAlchemy2-*.zip

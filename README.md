@@ -1,6 +1,6 @@
-# Little Alchemy 2 for Wii
+# Little Alchemy 2 for Wii, Wii U, Switch and 3DS
 
-**Version:** 2.4.4 · **Coder:** quatric
+**Version:** 2.5.0 · **Coder:** quatric
 
 An element-combining puzzle game for the Wii Homebrew Channel. It uses the same
 elements and recipes as [Little Alchemy 2](https://littlealchemy2.com/): start with
@@ -28,6 +28,26 @@ Grab the latest build from the [latest release](../../releases/latest): `LittleA
 2. Open Little Alchemy 2 from the Homebrew Channel.
 
 The zip includes the icon pack and the music and sound effects.
+
+## Other consoles
+
+The same game also runs on the Switch, the Wii U and the 3DS. Each release has an SD card zip per console
+(`LittleAlchemy2-switch.zip`, `LittleAlchemy2-wiiu.zip`, `LittleAlchemy2-3ds.zip`); extract it to the root
+of the SD card. They include the icon pack and the music and sound effects.
+
+| Console | Folder on the SD card | Launch from | Pointer |
+|---|---|---|---|
+| Switch | `switch/LittleAlchemy2/` | hbmenu (`.nro`) | Touch screen, Joy-Con / Pro Controller stick, USB mouse |
+| Wii U | `wiiu/apps/LittleAlchemy2/` | Aroma (`.wuhb`) or the Homebrew Launcher (`.rpx`) | GamePad touch screen, sticks, Pro Controller |
+| 3DS | `3ds/LittleAlchemy2/` | Homebrew Launcher (`.3dsx`) | Touch screen, circle pad |
+
+Buttons: A = drag (touching the screen counts as A), B = remove, D-pad = scroll, + / R = menu,
+− / L = clear the table, Y = hint, X = hide finished elements. On the 3DS the game is shown on the touch
+screen at half size and mirrored on the top screen.
+
+Build them with `make -C ports/switch`, `make -C ports/wiiu` or `make -C ports/3ds` (devkitPro with
+libnx + `switch-sdl2`, `wut` + `wiiu-sdl2`, or libctru), then `scripts/package_port.sh switch|wiiu|3ds`.
+`make -C ports/host run` builds a desktop SDL2 version for quick testing.
 
 ## Install
 Copy `apps/LittleAlchemy2/` to `sd:/apps/LittleAlchemy2/` and launch it from the Homebrew Channel
